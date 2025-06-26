@@ -41,7 +41,6 @@
         {% endblock %}
     </head>
     <body class="bg-light body-visitor">
-
         {# Navbar #}
         <nav class="navbar navbar-expand-lg bg-warning shadow mb-5 py-3">
             <div class="container-fluid">
@@ -50,23 +49,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav ms-4">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{path('app_visitor_welcome')}}">Accueil</a>
+                            <a class="nav-link" aria-current="page" href="{{path('app_visitor_welcome')}}">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('app_visitor_welcome')}}#about-us">Qui sommes-nous ?</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('app_visitor_label_index')}}">Les labels</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Connexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('app_register')}}">Inscription</a>
                         </li>
                     </ul>
                 </div>
