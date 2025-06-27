@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - EcoRadar{% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        <h1 class="mb-4" style="font-family: 'Poppins', sans-serif;">Bienvenue sur EcoRadar</h1>
+        <video class="mb-4" controls style="max-width: 100%; border-radius: 8px;">
+            <source src="{{ asset('videos/promo.mp4') }}" type="video/mp4">
+            Votre navigateur ne prend pas en charge la vidéo.
+        </video>
+        <a href="{{ path('explorer') }}" class="btn btn-warning btn-lg rounded-pill">
+            Découvrir les labels
+        </a>
+    </div>
+{% endblock %}
