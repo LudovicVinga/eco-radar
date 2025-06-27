@@ -7,7 +7,7 @@
         {# Minimum de Responsive Design à toujours mettre en place #}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{% block title %}{% endblock %} | EcoRadar</title>
+        <title>{% block title %}{% endblock %} | Espace utilisateur EcoRadar</title>
 
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="keywords" content="{% block keywords %}{% endblock %}">
@@ -40,52 +40,32 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="bg-light body-visitor">
+    <body class="bg-light body-user">
 
         {# Navbar #}
-        <nav class="navbar navbar-expand-lg bg-warning shadow mb-5 py-3">
+        <nav class="navbar navbar-expand-lg bg-secondary navbar-dark shadow mb-5 py-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{path('app_visitor_welcome')}}"><img width="50" class="rounded-circle" src="/images/static/visitor/Logo_ecoRadar.jpg" alt="Logo EcoRadar"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{path('app_visitor_welcome')}}">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('app_visitor_welcome')}}#about-us">Qui sommes-nous ?</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('app_visitor_label_index')}}">Les labels</a>
-                        </li>
-                    </ul>
                     <ul class="navbar-nav ms-auto">
-                        {% if app.user %}
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{path('app_user_home')}}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="">Mon profil</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{path('app_admin_home')}}">Espace admin</a>
                         </li>
-                        {% endif %}
-
-                        {% if is_granted('ROLE_USER') %}
-                            <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{path('app_user_home')}}">Espace utilisateur</a>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{path('app_visitor_welcome')}}">Retour au site</a>
                         </li>
-                        {% endif %}
-                        
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{path('app_logout')}}">Déconnexion</a>
                         </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{path('app_login')}}">Connexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('app_register')}}">Inscription</a>
-                        </li>
-                        {% endif %}
             
                     </ul>
                 </div>
