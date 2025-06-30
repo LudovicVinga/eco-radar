@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -75,6 +77,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    /**
+     * @var Collection<int, Label>
+     */
+    #[ORM\OneToMany(targetEntity: Label::class, mappedBy: 'user')]
+    private Collection $labels;
+
+    public function __construct()
+    {
+        $this->labels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -193,6 +206,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Label>
+     */
+    public function getLabels(): Collection
+    {
+        return $this->labels;
+    }
+
+    public function addLabel(Label $label): static
+    {
+        if (!$this->labels->contains($label)) {
+            $this->labels->add($label);
+            $label->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLabel(Label $label): static
+    {
+        if ($this->labels->removeElement($label)) {
+            // set the owning side to null (unless already changed)
+            if ($label->getUser() === $this) {
+                $label->setUser(null);
+            }
+        }
 
         return $this;
     }
