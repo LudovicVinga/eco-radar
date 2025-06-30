@@ -38,8 +38,11 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Image</th>
                     <th>Nom</th>
-                    <th>Slug</th>
+                    <th>Catégorie</th>
+                    <th>Publié ?</th>
+                    <th>Contenu</th>
                     <th>Crée le</th>
                     <th>Modifié le</th>
                     <th>Options</th>
@@ -50,18 +53,42 @@
                 {% for label in labels %}
                     <tr>
                         <td>{{label.id}}</td>
+                        <td>
+                            {% if label.image %}
+                                <img class="img-fluid" src="{{ vich_uploader_asset(label, 'imageFile') | imagine_filter('admin_label_thumb') }}" alt="{{ label.name }}">
+                            {% else %}
+                                <span>---</span>
+                            {% endif %}
+                        </td>
                         <td>{{label.name}}</td>
-                        <td>{{label.slug}}</td>
+                        <td>{{label.category.name}}</td>
+                        <td>
+                            {% if label.isPublished %}
+                                <span>Publié le {{label.publishedAt|date()}}</span>
+                            {% else %}
+                                <span>Non</span>
+                            {% endif %} 
+
+                            <form action="{{path('app_admin_label_publish', {'id':label.id})}}" method="post">
+                                <div class="form-check form-switch d-flex justify-content-center align-items-center">
+                                    <input type="hidden" name="csrf_token" value="{{csrf_token('publish-label-'~label.id)}}">
+                                    <input {{label.isPublished ? 'checked' : ''}} onclick="return confirm('Confirmer cette action ?')" onchange="this.form.submit()" class="form-check-input" type="checkbox" role="switch">
+                                </div>
+                            </form>                     
+                        </td>
+                        <td>
+                            <a href="{{path('app_admin_label_show', {'id':label.id})}}" class="btn btn-sm btn-warning">Voir</a>
+                        </td>
                         <td>{{label.createdAt|date()}}</td>
                         <td>{{label.updatedAt|date()}}</td>
-                        {# <td>
-                            <a href="{{path('app_admin_category_edit', {'id': category.id})}}" class="btn btn-sm btn-primary">Modifier</a>
+                        <td>
+                            <a href="{{path('app_admin_label_edit', {'id': label.id})}}" class="btn btn-sm btn-primary m-1">Modifier</a>
 
-                            <form class="d-inline" action="{{path('app_admin_category_delete', {'id': category.id})}}" method="post">
-                                <input type="hidden" name="csrf_token" value="{{csrf_token('delete-category-'~category.id)}}">
-                                <input type="submit" class="btn btn-sm btn-danger" value="Supprimer" onclick="return confirm('Attention ! En supprimant cette catégorie, vous supprimerez tous les labels associés. Confirmez ?')">
+                            <form class="d-inline" action="{{path('app_admin_label_delete', {'id': label.id})}}" method="post">
+                                <input type="hidden" name="csrf_token" value="{{csrf_token('delete-label-'~label.id)}}">
+                                <input type="submit" class="btn btn-sm btn-danger m-1" value="Supprimer" onclick="return confirm('Attention ! Vous êtes sur le point de supprimer ce label. Confirmez ?')">
                             </form>
-                        </td> #}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -1,0 +1,25 @@
+{% extends "themes/base_admin.html.twig" %}
+
+{% block title %}Consulter le label numéro: {{label.id}}{% endblock %}
+
+{% block description %}Consultez la fiche complète du label.{% endblock %}
+
+{% block main %}
+    <h1 class="text-center fw-bold fst-italic my-4 display-5">{{label.name}}</h1>
+
+    <div class="container">
+        <div class="text-center">
+            {% if label.image %}
+            <img class="img-fluid" src="{{ vich_uploader_asset(label, 'imageFile') }}" alt="{{ label.name }}">  
+            {% endif %}
+            <small>Crée le: {{label.createdAt|date()}}</small>
+            {% if label.publishedAt %}
+                <small>Publié le: {{label.publishedAt|date()}}</small>
+            {% endif %}
+        </div>
+
+        <div class="text-center my-5">
+            {{label.content|nl2br}}
+        </div>
+    </div>
+{% endblock %}
