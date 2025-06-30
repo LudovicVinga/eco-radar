@@ -1,0 +1,51 @@
+{% extends 'themes/base_admin.html.twig' %}
+
+{% block title %}Créer une nouveau label{% endblock %}
+
+{% block description %}Créez facilement une nouveau label. Organisez vos contenus en quelques clics et gérez votre site plus efficacement dès maintenant{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Nouveau label</h1>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                {{ form_start(form) }}
+                    <div class="mb-3">
+                        <label for="admin_label_form_name">Nom <span class="text-danger">*</span></label>
+                        <div class="text-danger">{{ form_errors(form.name) }}</div>
+                        {{ form_widget(form.name, {'attr': {'class':'form-control my-3', 'autofocus':'autofocus'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="admin_label_form_category">Catégorie <span class="text-danger">*</span></label>
+                        <div class="text-danger">{{ form_errors(form.category) }}</div>
+                        {{ form_widget(form.category, {'attr': {'class':'form-control my-3'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="admin_label_form_description">Description <span class="text-danger">*</span></label>
+                        <div class="text-danger">{{ form_errors(form.description) }}</div>
+                        {{ form_widget(form.description, {'attr': {'class':'form-control my-3'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="admin_label_form_keywords">Mots clés</label>
+                        <div class="text-danger">{{ form_errors(form.keywords) }}</div>
+                        {{ form_widget(form.keywords, {'attr': {'class':'form-control my-3'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="admin_label_form_keywords">Image</label>
+                        <div class="text-danger">{{ form_errors(form.imageFile) }}</div>
+                        {{ form_widget(form.imageFile, {'attr': {'class':'form-control my-3'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="admin_label_form_content">Contenu</label>
+                        <div class="text-danger">{{ form_errors(form.content) }}</div>
+                        {{ form_widget(form.content, {'attr': {'class':'form-control my-3', 'rows':10}}) }}
+                    </div>
+                    <div>
+                        <input formnovalidate type="submit" class="btn btn-secondary w-100 rounded-pill shadow">
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

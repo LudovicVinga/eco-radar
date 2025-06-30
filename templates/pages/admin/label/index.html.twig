@@ -1,0 +1,70 @@
+{% extends "themes/base_admin.html.twig" %}
+
+{% block title %}Liste des labels{% endblock %}
+
+{% block description %}Gérez facilement touts vos labels depuis votre espace administrateur. Visualisez, modifiez ou ajoutez de nouveaux labels pour organiser efficacement votre contenu{% endblock %}
+
+{% block jQuery %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block dataTables %}
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.3.2/datatables.min.css" rel="stylesheet" integrity="sha384-nt2TuLL4RlRQ9x6VTFgp009QD7QLRCYX17dKj9bj51w2jtWUGFMVTveRXfdgrUdx" crossorigin="anonymous">
+ 
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.3.2/datatables.min.js" integrity="sha384-rL0MBj9uZEDNQEfrmF51TAYo90+AinpwWp2+duU1VDW/RG7flzbPjbqEI3hlSRUv" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/2.3.2/i18n/fr-FR.json',
+                },
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Liste des labels</h1>
+
+    {% include 'components/alert.html.twig' %}
+
+    <div class="d-flex justify-content-end align-items-center my-4">
+        <a href="{{path('app_admin_label_create')}}" class="btn btn-secondary rounded-pill shadow"><i class="fa-solid fa-plus"></i> Ajouter un label</a>
+    </div>
+
+    <div class="table-responsive">
+        <table id="myTable" class="table table-striped table-hover table-bordered text-center table-secondary">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Slug</th>
+                    <th>Crée le</th>
+                    <th>Modifié le</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for label in labels %}
+                    <tr>
+                        <td>{{label.id}}</td>
+                        <td>{{label.name}}</td>
+                        <td>{{label.slug}}</td>
+                        <td>{{label.createdAt|date()}}</td>
+                        <td>{{label.updatedAt|date()}}</td>
+                        {# <td>
+                            <a href="{{path('app_admin_category_edit', {'id': category.id})}}" class="btn btn-sm btn-primary">Modifier</a>
+
+                            <form class="d-inline" action="{{path('app_admin_category_delete', {'id': category.id})}}" method="post">
+                                <input type="hidden" name="csrf_token" value="{{csrf_token('delete-category-'~category.id)}}">
+                                <input type="submit" class="btn btn-sm btn-danger" value="Supprimer" onclick="return confirm('Attention ! En supprimant cette catégorie, vous supprimerez tous les labels associés. Confirmez ?')">
+                            </form>
+                        </td> #}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
