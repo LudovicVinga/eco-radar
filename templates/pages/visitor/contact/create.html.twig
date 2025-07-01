@@ -57,13 +57,19 @@
         <div class="row text-center">
             <div class="col-md-6 my-3">
                 <p>
-                    <i class="fa-solid fa-envelope text-secondary"></i>: eco-radar@gmail.com
+                    <i class="fa-solid fa-envelope text-secondary"></i>: {{setting.email}}
                 </p>
             </div>
             <div class="col-md-6 my-3">
-                <p>
-                    <i class="fa-solid fa-phone text-secondary"></i>: 07 64 74 94 00
-                </p>         
+                {% if setting.phone %}
+                    <p>
+                        <i class="fa-solid fa-phone text-secondary"></i> : {{setting.phone}}
+                    </p> 
+                {% else %}
+                    <p>
+                        <i class="fa-solid fa-phone text-secondary"></i> : Indisponible
+                    </p>        
+                {% endif %}
             </div>
         </div>
 {% endblock %}
