@@ -30,6 +30,9 @@
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
 
+        {# Font awesome #}
+        {% block fontAwesome %}{% endblock %}
+
         {# Bootstrap v5 CSS #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -59,6 +62,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('app_visitor_label_index')}}">Les labels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('app_visitor_contact_create')}}">Contact</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
