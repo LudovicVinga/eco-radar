@@ -22,7 +22,7 @@ class EditPasswordFormType extends AbstractType
                     new UserPassword([
                         'message' => 'Le mot de passe actuel est invalide.',
                     ]),
-                ]
+                ],
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,

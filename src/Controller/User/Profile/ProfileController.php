@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\Profile;
+namespace App\Controller\User\Profile;
 
 use App\Entity\User;
 use App\Form\EditPasswordFormType;
@@ -12,44 +12,44 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/admin')]
+#[Route('/user')]
 final class ProfileController extends AbstractController
 {
-    #[Route('/profile/index', name: 'app_admin_profile_index', methods: ['GET'])]
+    #[Route('/profile/index', name: 'app_user_profile_index', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('pages/admin/profile/index.html.twig', [
+        return $this->render('pages/user/profile/index.html.twig', [
         ]);
     }
 
-    #[Route('/profile/edit-profile', name: 'app_admin_profile_edit', methods: ['GET', 'POST'])]
+    #[Route('/profile/edit-profile', name: 'app_user_profile_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, EntityManagerInterface $entityManager): Response
     {
         /**
          * @var User
          */
-        $admin = $this->getUser();
+        $user = $this->getUser();
 
-        $form = $this->createForm(EditProfileFormType::class, $admin);
+        $form = $this->createForm(EditProfileFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $admin->setUpdatedAt(new \DateTimeImmutable());
+            $user->setUpdatedAt(new \DateTimeImmutable());
 
-            $entityManager->persist($admin);
+            $entityManager->persist($user);
             $entityManager->flush();
 
             $this->addFlash('success', 'Votre profil a bien été mis à jour.');
 
-            return $this->redirectToRoute('app_admin_profile_index');
+            return $this->redirectToRoute('app_user_profile_index');
         }
 
-        return $this->render('pages/admin/profile/edit_profile.html.twig', [
+        return $this->render('pages/user/profile/edit_profile.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
-    #[Route('/profile/edit-password', name: 'app_admin_profile_edit_password', methods: ['GET', 'POST'])]
+    #[Route('/profile/edit-password', name: 'app_user_profile_edit_password', methods: ['GET', 'POST'])]
     public function editPassword(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $hasher): Response
     {
         $form = $this->createForm(EditPasswordFormType::class, null);
@@ -59,24 +59,24 @@ final class ProfileController extends AbstractController
             /**
              * @var User
              */
-            $admin = $this->getUser();
+            $user = $this->getUser();
 
             $data = $form->getData();
 
-            $passwordHashed = $hasher->hashPassword($admin, $data['plainPassword']);
+            $passwordHashed = $hasher->hashPassword($user, $data['plainPassword']);
 
-            $admin->setPassword($passwordHashed);
-            $admin->setUpdatedAt(new \DateTimeImmutable());
+            $user->setPassword($passwordHashed);
+            // $user->setUpdatedAt(new DateTimeImmutable());
 
-            $entityManager->persist($admin);
+            $entityManager->persist($user);
             $entityManager->flush();
 
             $this->addFlash('success', 'Votre mot de passe a bien été mis à jour.');
 
-            return $this->redirectToRoute('app_admin_profile_index');
+            return $this->redirectToRoute('app_user_profile_index');
         }
 
-        return $this->render('pages/admin/profile/edit_password.html.twig', [
+        return $this->render('pages/user/profile/edit_password.html.twig', [
             'form' => $form->createView(),
         ]);
     }
