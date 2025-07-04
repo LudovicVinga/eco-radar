@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Visualisations - EcoRadar{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h2 class="text-center mb-4">Visualisations de données</h2>
+
+  <p class="text-center">Voici un aperçu graphique des labels éthiques référencés.</p>
+
+  <h3 class="text-center mt-4">Labels par pays</h3>
+  <canvas id="chartCountry" style="height: 300px;"></canvas>
+   
+  <h3 class="text-center mt-4">Labels par secteur</h3>
+  <canvas id="chartSector" style="height: 300px;"></canvas>
+
+  <h3 class="text-center mt-4">Labels certifiés vs non certifiés</h3>
+  <canvas id="chartCert" style="height: 300px;"></canvas>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    new Chart(document.getElementById('chartCountry'), {
+      type: 'bar',
+      data: {
+        labels: {{ countryLabels|json_encode|raw }},
+        datasets: [{
+          label: 'Labels par pays',
+          data: {{ countryData|json_encode|raw }},
+          backgroundColor: '#7566D9'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    new Chart(document.getElementById('chartSector'), {
+      type: 'bar',
+      data: {
+        labels: {{ sectorLabels|json_encode|raw }},
+        datasets: [{
+          label: 'Labels par secteur',
+          data: {{ sectorData|json_encode|raw }},
+          backgroundColor: '#58B368'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    new Chart(document.getElementById('chartCert'), {
+      type: 'pie',
+      data: {
+        labels: {{ certLabels|json_encode|raw }},
+        datasets: [{
+          data: {{ certData|json_encode|raw }},
+          backgroundColor: ['#FFD700', '#CCCCCC']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  </script>
+{% endblock %}

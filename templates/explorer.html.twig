@@ -1,72 +1,112 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Explorer les labels éthiques{% endblock %}
+{% block title %}Explorer les labels - EcoRadar{% endblock %}
 
 {% block body %}
-<div class="container">
-  <h2 class="text-center mb-4">Explorer les labels éthiques dans le monde</h2>
+<div class="container py-5">
+  <h2 class="text-center mb-4 animate__animated animate__fadeInDown">Explorer les labels</h2>
 
-  <!-- Filtres -->
-  <form class="row mb-4">
+  <form method="get" class="row g-3 mb-5 animate__animated animate__fadeIn">
     <div class="col-md-3">
       <label for="pays" class="form-label">Pays</label>
-      <select id="pays" class="form-select">
-        <option>Tous</option>
-        <option>France</option>
-        <option>Allemagne</option>
-        <option>États-Unis</option>
+      <select name="pays" id="pays" class="form-select">
+        <option value="">Tous</option>
+        <option value="France" {% if pays == 'France' %}selected{% endif %}>France</option>
+        <option value="Allemagne" {% if pays == 'Allemagne' %}selected{% endif %}>Allemagne</option>
+        <option value="États-Unis" {% if pays == 'États-Unis' %}selected{% endif %}>États-Unis</option>
       </select>
     </div>
+
     <div class="col-md-3">
       <label for="secteur" class="form-label">Secteur</label>
-      <select id="secteur" class="form-select">
-        <option>Tous</option>
-        <option>Textile</option>
-        <option>Accessoires</option>
+      <select name="secteur" id="secteur" class="form-select">
+        <option value="">Tous</option>
+        <option value="Agriculture" {% if secteur == 'Agriculture' %}selected{% endif %}>Agriculture</option>
+        <option value="Textile" {% if secteur == 'Textile' %}selected{% endif %}>Textile</option>
+        <option value="Énergie" {% if secteur == 'Énergie' %}selected{% endif %}>Énergie</option>
       </select>
     </div>
-    <div class="col-md-3">
-      <label for="label" class="form-label">Label</label>
-      <input type="text" class="form-control" id="label" placeholder="Nom du label">
+
+    <div class="col-md-4">
+      <label for="label" class="form-label">Nom du label</label>
+      <input type="text" name="label" id="label" value="{{ label }}" class="form-control" placeholder="Rechercher un label...">
     </div>
-    <div class="col-md-3 d-flex align-items-end">
-      <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn btn-success w-100">🔍 Filtrer</button>
     </div>
   </form>
 
-  <!-- Carte interactive (placeholder) -->
-  <div class="mb-5">
-    <div class="bg-light border p-5 text-center" style="height: 300px;">
-      <em>Carte interactive ici (ex: Leaflet, Mapbox...)</em>
-    </div>
-  </div>
+    <div class="mb-5">
+  <div id="map" style="height: 400px; border-radius: 8px;"></div>
+</div>
 
-  <!-- Tableau des résultats -->
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead class="table-dark">
-        <tr>
-          <th>Nom du label</th>
-          <th>Pays</th>
-          <th>Secteur</th>
-          <th>Certification</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Fair Wear Foundation</td>
-          <td>Allemagne</td>
-          <td>Textile</td>
-          <td>Oui</td>
-        </tr>
-        <tr>
-          <td>GOTS</td>
-          <td>International</td>
-          <td>Textile</td>
-          <td>Oui</td>
-        </tr>
-      </tbody>
-    </table>
+
+  <div class="row">
+    {% if labels is not empty %}
+      {% for label in labels %}
+        <div class="col-md-4 mb-4 animate__animated animate__fadeInUp">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body">
+              <h5 class="card-title">{{ label.name }}</h5>
+              <p class="card-text text-muted mb-1">
+                <strong>Pays :</strong> {{ label.country }}<br>
+                <strong>Secteur :</strong> {{ label.sector }}<br>
+                <strong>Certification :</strong>
+                <span class="badge bg-{{ label.certification ? 'success' : 'secondary' }}">
+                  {{ label.certification ? 'Oui' : 'Non' }}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="col-12 text-center">
+        <p class="text-muted fs-5"> Aucun label trouvé avec ces filtres.</p>
+      </div>
+    {% endif %}
   </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- Leaflet CSS + JS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2pQsCvt+U48gSoG5frR/1tMM/Ta94wqI1xwZ1jU="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-u0A+0kFAnmcj42+SwFZ6rBXYMbGvukX+0XQUQIMo0uY="
+    crossorigin=""
+  ></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const map = L.map("map").setView([48.8566, 2.3522], 4); // Vue centrée sur l’Europe
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      // Exemple de marqueurs fictifs
+      const labels = [
+        { name: "Fair Wear Foundation", coords: [52.37, 4.89] },
+        { name: "GOTS", coords: [50.11, 8.68] }
+      ];
+
+      labels.forEach(label => {
+        L.marker(label.coords).addTo(map)
+          .bindPopup(`<strong>${label.name}</strong>`);
+      });
+    });
+  </script>
 {% endblock %}

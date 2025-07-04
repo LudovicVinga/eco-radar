@@ -4,8 +4,13 @@ when@dev:
 
     framework:
         profiler:
-            collect_serializer_data: true
+            enabled: true
 
 when@test:
+    web_profiler:
+        toolbar: false
+        intercept_redirects: false
+
     framework:
-        profiler: { collect: false }
+        profiler:
+            collect: false

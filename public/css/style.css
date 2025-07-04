@@ -1,0 +1,121 @@
+/* === EcoRadar - Styles personnalisés === */
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+h1,
+h2,
+h3,
+.navbar {
+    background-color: #f4b860 !important;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand img {
+    border: 2px solid white;
+}
+
+.navbar-nav .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff !important;
+    background-color: rgba(117, 102, 217, 0.7);
+    border-radius: 20px;
+    padding: 8px 16px;
+}
+
+#mainNavbar.scrolled {
+    background-color: rgba(30, 30, 60, 0.95); /* violet très foncé opaque */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-header {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-header h1 {
+    background-color: rgba(
+        244,
+        184,
+        96,
+        0.9
+    ); /* Couleur bouton en fond du titre */
+    display: inline-block;
+    padding: 0.5em 1em;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.hero-header p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.hero-header .btn {
+    background-color: #f4b860;
+    color: #111;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 28px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-header .btn:hover {
+    background-color: #e09e3e;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #4d4b47;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 24px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #6c6651;
+    color: #000;
+}
+
+.table thead th {
+    background-color: #333;
+    color: #fff;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+    .btn-primary {
+        width: 100%;
+        display: block;
+        margin-top: 10px;
+    }
+    nav a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
