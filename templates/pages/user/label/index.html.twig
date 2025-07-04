@@ -18,7 +18,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         {% for category in categories %}
-                            <li><a class="dropdown-item" href="#">{{category.name}} ({{category.labels|length}})</a></li>   
+                            <li><a class="dropdown-item" href="{{path('app_user_label_filter_by_category', {'id':category.id, 'slug': category.slug})}}"> {{category.name}} ({{category.labels|length}})</a></li>   
                         {% endfor %}
                     </ul>
                 </div>
@@ -58,6 +58,11 @@
                     </article>
                     <hr class="my-5 text-primary">
                 {% endfor %}
+
+                {# display navigation #}
+                {# <div class="d-flex justify-content-center align-items-center">
+                    {{ knp_pagination_render(labels) }}
+                </div> #}
             </div>
         </div>
 {% endblock %}
