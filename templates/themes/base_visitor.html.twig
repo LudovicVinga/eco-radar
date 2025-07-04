@@ -63,9 +63,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('app_visitor_welcome')}}#about-us">Qui sommes-nous ?</a>
                         </li>
+                        {% if is_granted('ROLE_USER') %}
                         <li class="nav-item">
-                            <a class="nav-link {{ pathClient == path('app_visitor_label_index') ?  "eco-active" : ""  }}" {{ pathClient == path('app_visitor_label_index') ? 'aria-current="page"' : '' }} href="{{path('app_visitor_label_index')}}">Les labels</a>
+                            <a class="nav-link {{ pathClient == path('app_user_label_index') ?  "eco-active" : ""  }}" {{ pathClient == path('app_user_label_index') ? 'aria-current="page"' : '' }} href="{{path('app_user_label_index')}}">Les labels</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link {{ pathClient == path('app_visitor_contact_create') ?  "eco-active" : ""  }}" {{ pathClient == path('app_visitor_contact_create') ? 'aria-current="page"' : '' }} href="{{path('app_visitor_contact_create')}}">Contact</a>
                         </li>
