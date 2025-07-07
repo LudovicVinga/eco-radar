@@ -1,0 +1,35 @@
+{% extends "themes/base_visitor.html.twig" %}
+
+{% block title %}Consulter le label: {{label.name}}{% endblock %}
+
+{% block description %}Consultez votre label complet. | {{label.description}}{% endblock %}
+
+{% block keywords %}label, fiche label, label éthique, description label, informations label, label responsable, label écologique, label durable, catégorie label, certification, consulter label, détails label, label environnemental, label qualité, label produit, label entreprise{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <div class="container-img">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{path('app_user_label_index')}}">Liste des labels</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{label.name|u.truncate('60', '...')}}</li>
+                </ol>
+            </nav>
+
+            <div>
+                {% if label.image %}
+                    <img src="{{vich_uploader_asset(label, 'imageFile') }}" class="img-fluid rounded-start w-100 h-100" alt="{{label.name}}">
+                {% endif %}
+            </div>
+
+            <div class="text-center">
+                <h1>{{label.name}}</h1>
+                <small>Publié {{label.publishedAt|ago}} par <strong>Eve Florien</strong></small>
+            </div>
+        </div>
+
+        <div class="container-label my-5">
+            {{label.content|nl2br}}
+        </div>
+    </div>
+{% endblock %}

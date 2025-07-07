@@ -6,6 +6,10 @@
 
 {% block keywords %}labels éthiques, liste labels, labels responsables, certifications éthiques, comparatif labels, critères labels, labels écologiques, labels bio, labels équitables, labels durables, annuaire labels{% endblock %}
 
+{% block knp_paginator_rel_links %}
+    {{ knp_pagination_rel_links(labels) }}
+{% endblock %}
+
 {% block main %}
     <h1 class="text-center display-5 my-3">Les Labels éthiques</h1>
 
@@ -41,8 +45,8 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h2 class="card-title">{{label.name}}</h2>
-                                    <p class="card-text">{{label.description}}</p>
+                                    <h2 class="card-title">{{label.name|u.truncate('60', '...')}}</h2>
+                                    <p class="card-text">{{label.description|u.truncate('80', '...')}}</p>
                                     <p>
                                         <span class="text-danger">Catégorie</span> : {{label.category.name}}
                                     </p>
@@ -51,7 +55,7 @@
                                         <small class="text-body-secondary">Publié {{label.publishedAt|ago}}</small>
                                     </p>
 
-                                    <a href="" class="btn btn-lg btn-primary">Consulter</a>
+                                    <a href="{{path('app_user_label_show', {'id':label.id, 'slug': label.slug})}}" class="btn btn-lg btn-primary">Consulter</a>
                                 </div>
                             </div>
                         </div>
@@ -60,9 +64,9 @@
                 {% endfor %}
 
                 {# display navigation #}
-                {# <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex justify-content-center align-items-center">
                     {{ knp_pagination_render(labels) }}
-                </div> #}
+                </div>
             </div>
         </div>
 {% endblock %}
