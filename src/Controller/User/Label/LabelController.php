@@ -3,6 +3,7 @@
 namespace App\Controller\User\Label;
 
 use App\Entity\Category;
+use App\Entity\Label;
 use App\Repository\CategoryRepository;
 use App\Repository\LabelRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -23,7 +24,7 @@ final class LabelController extends AbstractController
         $labels = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1), /* page number */
-            10 /* limit per page */
+            2 /* limit per page */
         );
 
         return $this->render('pages/user/label/index.html.twig', [
@@ -41,6 +42,14 @@ final class LabelController extends AbstractController
         return $this->render('pages/user/label/index.html.twig', [
             'labels' => $labels,
             'categories' => $categories,
+        ]);
+    }
+
+    #[Route('/label/article/{id<\d+>}/{slug}', name: 'app_user_label_show', methods: ['GET'])]
+    public function showLabel(Label $label): Response
+    {
+        return $this->render('pages/user/label/show.html.twig', [
+            'label' => $label,
         ]);
     }
 }
