@@ -16,11 +16,18 @@ class VisitorContactFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('message', TextareaType::class)
-        ;
+            ->add('firstName', TextType::class, [
+                'label' => 'Prénom',
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => 'Nom',
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+            ])
+            ->add('message', TextareaType::class, [
+                'label' => 'Message',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -29,4 +36,5 @@ class VisitorContactFormType extends AbstractType
             'data_class' => Contact::class,
         ]);
     }
-} 
+}
+

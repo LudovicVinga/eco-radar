@@ -2,35 +2,75 @@
 
 {% block title %}À propos - EcoRadar{% endblock %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <style>
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-image {
+      transition: transform 0.4s ease;
+    }
+
+    .about-image:hover {
+      transform: scale(1.05);
+    }
+  </style>
+{% endblock %}
+
 {% block body %}
-<div class="container py-5">
-  <h2 class="text-center mb-4 animate__animated animate__fadeInDown">À propos d’EcoRadar</h2>
+<section class="py-5 bg-light text-dark" style="font-family: 'Poppins', sans-serif;">
+  <div class="container">
+    <h1 class="text-center mb-5 fw-bold fade-in-up">À propos d’EcoRadar</h1>
+    
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0 fade-in-up">
+        <img src="{{ asset('images/pexels-freestocks-291762.jpg') }}" alt="Mode éthique" class="img-fluid rounded-4 shadow-sm about-image">
+      </div>
 
-  <p class="lead text-center animate__animated animate__fadeInUp">
-     EcoRadar est une plateforme collaborative dédiée à la découverte, la visualisation et la transparence des labels éthiques dans le monde entier.
-  </p>
+      <div class="col-md-6 fade-in-up">
+        <p class="lead">
+          <strong>EcoRadar</strong> est une plateforme engagée pour la <strong>transparence des labels de mode éthique</strong> à travers le monde.
+        </p>
 
-  <div class="row mt-5">
-    <div class="col-md-6 animate__animated animate__fadeInLeft">
-      <h4> Notre mission</h4>
-      <p>
-        Offrir un accès clair et interactif aux informations sur les labels éthiques afin d’aider les consommateurs, marques et chercheurs à faire des choix éclairés.
-      </p>
-    </div>
+        <p>
+          Dans un contexte où les consommateurs cherchent à faire des choix plus responsables, EcoRadar fournit une vue claire et accessible des certifications disponibles.
+        </p>
 
-    <div class="col-md-6 animate__animated animate__fadeInRight">
-      <h4> Fonctionnalités</h4>
-      <ul class="list-unstyled">
-        <li> Exploration des labels par pays et secteur</li>
-        <li> Visualisation avec graphiques et cartes interactives</li>
-        <li> Recherche filtrée (nom, secteur, certification)</li>
-      </ul>
+        <p>
+          Notre objectif est de vous aider à <strong>mieux comprendre</strong> les critères environnementaux, sociaux et éthiques portés par chaque label, afin de consommer en toute conscience.
+        </p>
+
+        <p>
+          <em>Informez-vous, explorez les données, et agissez pour une mode plus durable !</em>
+        </p>
+
+        <a href="{{ path('explorer') }}" class="btn btn-warning mt-3 px-4 py-2 rounded-pill">Explorer les labels</a>
+      </div>
     </div>
   </div>
-</div>
+</section>
 {% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  </script>
 {% endblock %}

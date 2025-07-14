@@ -18,18 +18,27 @@ class RegistrationForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('email', EmailType::class)
+            ->add('firstName', TextType::class, [
+                'label' => 'Prénom',
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => 'Nom',
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Adresse e-mail',
+            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'Le mot de passe doit être identique a sa confirmation.',
+                'invalid_message' => 'Le mot de passe doit être identique à sa confirmation.',
+                'first_options' => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmer le mot de passe'],
             ])
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'J\'accepte les conditions générales d\'utilisation',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Veuillez lire et accpeter les conditions générales d\'utilisation.',
+                        'message' => 'Veuillez lire et accepter les conditions générales d\'utilisation.',
                     ]),
                 ],
             ])
