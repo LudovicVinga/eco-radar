@@ -5,4 +5,4 @@ Disallow: /user/
 
 Allow: /
 
-Sitemap: https://localhost:8000/sitemap.xml
+Sitemap: https://localhost:8001/sitemap.xml
