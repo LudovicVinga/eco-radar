@@ -34,10 +34,18 @@ final class LabelController extends AbstractController
     }
 
     #[Route('/label/filtre-par-categorie/{id<\d+>}/{slug}', name: 'app_user_label_filter_by_category', methods: ['GET'])]
-    public function labelsFilterByCategory(Category $category, LabelRepository $labelRepository, CategoryRepository $categoryRepository): Response
+    public function labelsFilterByCategory(Category $category, LabelRepository $labelRepository, CategoryRepository $categoryRepository, PaginatorInterface $paginator,
+        Request $request): Response
     {
+        $query = $labelRepository->findBy(['category' => $category], ['isPublished' => 'DESC']);
+
+        $labels = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            2
+        );
+
         $categories = $categoryRepository->findall();
-        $labels = $labelRepository->findBy(['category' => $category], ['isPublished' => 'DESC']);
 
         return $this->render('pages/user/label/index.html.twig', [
             'labels' => $labels,
