@@ -1,0 +1,9 @@
+.card-body img {
+    width: 300px;         /* Largeur fixe (ajuste selon ton besoin) */
+    height: 250px;        /* Hauteur fixe */
+    object-fit: cover;    /* Garde le ratio, recadre si besoin */
+    border-radius: 0.25rem; /* Pour garder les coins arrondis */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

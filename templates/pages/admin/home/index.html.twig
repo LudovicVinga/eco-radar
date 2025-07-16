@@ -6,4 +6,54 @@
 
 {% block main %}
     <h1 class="text-center my-3 display-5">Bienvenue {{app.user.firstName}} {{app.user.lastName}}</h1>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card shadow-lg rounded-4 border-0 bg-light">
+                    <div class="card-body p-4 d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-2 text-primary text-center text-uppercase letter-spacing-1">Catégories</h5>
+                        <p class="ard-text text-secondary mb-4 fs-3 fw-semibold text-center">
+                        {{categories_count}}
+                        </p>
+                        <a href="{{path('app_admin_category_index')}}" class="btn btn-secondary btn-lg rounded-pill px-4 mt-auto w-100">Voir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card shadow-lg rounded-4 border-0 bg-light">
+                    <div class="card-body p-4 d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-2 text-primary text-center text-uppercase letter-spacing-1">Labels</h5>
+                        <p class="card-text text-secondary mb-4 fs-3 fw-semibold text-center">
+                        {{labels_count}}
+                        </p>
+                        <a href="{{path('app_admin_label_index')}}" class="btn btn-secondary btn-lg rounded-pill px-4 mt-auto w-100">Voir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card shadow-lg rounded-4 border-0 bg-light">
+                    <div class="card-body p-4 d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-2 text-primary text-center text-uppercase letter-spacing-1">Utilisateurs</h5>
+                        <p class="card-text text-secondary mb-4 fs-3 fw-semibold text-center">
+                        {{users_count}}
+                        </p>
+                        <a href="{{path('app_admin_user_index')}}" class="btn btn-secondary btn-lg rounded-pill px-4 mt-auto w-100">Voir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card shadow-lg rounded-4 border-0 bg-light">
+                    <div class="card-body p-4 d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-2 text-primary text-center text-uppercase letter-spacing-1">Contacts</h5>
+                        <p class="card-text text-secondary mb-4 fs-3 fw-semibold text-center">
+                        {{contacts_count}}
+                        </p>
+                        <a href="{{path('app_admin_contact_index')}}" class="btn btn-secondary btn-lg rounded-pill px-4 mt-auto w-100">Voir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

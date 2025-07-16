@@ -1,0 +1,75 @@
+{% extends "themes/base_visitor.html.twig" %}
+
+{% block title %}Me contacter{% endblock %}
+
+{% block description %}Contactez-moi facilement pour toute question, demande de collaborations ou informations. Je suis à votre écoute et répondrai rapidement à vos messages.{% endblock %}
+
+{% block keywords %}"contact, contactez-moi, formulaire de contact, prise de contact, demande d'information, question, message, email"{% endblock %}
+
+{% block fontAwesome %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{% block main %}
+    <h1 class="display-5 my-3 text-center">Contactez-moi</h1>
+
+    {% include 'components/alert.html.twig' %}
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                {{form_start(form)}}
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <label for="visitor_contact_form_firstName">Prénom <span class="text-danger">*</span></label>
+                            <div class="text-danger">{{form_errors(form.firstName)}}</div>
+                            {{form_widget(form.firstName, {'attr': {'class': 'form-control', 'autofocus':'autofocus'}})}}
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="visitor_contact_form_lastName">Nom <span class="text-danger">*</span></label>
+                            <div class="text-danger">{{form_errors(form.lastName)}}</div>
+                            {{form_widget(form.lastName, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="visitor_contact_form_email">Email <span class="text-danger">*</span></label>
+                            <div class="text-danger">{{form_errors(form.email)}}</div>
+                            {{form_widget(form.email, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="visitor_contact_form_message">Message <span class="text-danger">*</span></label>
+                            <div class="text-danger">{{form_errors(form.message)}}</div>
+                            {{form_widget(form.message, {'attr': {'class': 'form-control', 'rows':4}})}}
+                        </div>
+                    </div>
+                    <div>
+                        <input formnovalidate type="submit" class="btn btn-secondary w-100 shadow">
+                    </div>
+                {{form_end(form)}}
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center align-items-center my-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41989.217164897884!2d2.2289915486328016!3d48.8710602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc3938b318d%3A0x21d429a3e0edae7b!2sGuerlain%20Boutique%20Champs%20Elys%C3%A9es!5e0!3m2!1sfr!2sfr!4v1751355731590!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-6 my-3">
+                <p>
+                    <i class="fa-solid fa-envelope text-secondary"></i>: {{setting.email}}
+                </p>
+            </div>
+            <div class="col-md-6 my-3">
+                {% if setting.phone %}
+                    <p>
+                        <i class="fa-solid fa-phone text-secondary"></i> : {{setting.phone}}
+                    </p> 
+                {% else %}
+                    <p>
+                        <i class="fa-solid fa-phone text-secondary"></i> : Indisponible
+                    </p>        
+                {% endif %}
+            </div>
+        </div>
+{% endblock %}

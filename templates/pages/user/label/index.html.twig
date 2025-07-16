@@ -1,0 +1,72 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}Les labels{% endblock %}
+
+{% block description %}Découvrez la liste complète des labels éthiques : comparez les certifications, explorez leurs critères et trouvez facilement les labels responsables adaptés à vos valeurs et à vos achats durables{% endblock %}
+
+{% block keywords %}labels éthiques, liste labels, labels responsables, certifications éthiques, comparatif labels, critères labels, labels écologiques, labels bio, labels équitables, labels durables, annuaire labels{% endblock %}
+
+{% block knp_paginator_rel_links %}
+    {{ knp_pagination_rel_links(labels) }}
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center display-5 my-3">Les Labels éthiques</h1>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Catégorie(s)
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% for category in categories %}
+                            <li><a class="dropdown-item" href="{{path('app_user_label_filter_by_category', {'id':category.id, 'slug': category.slug})}}"> {{category.name}} ({{category.labels|length}})</a></li>   
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="row my-5">
+            <div class="col-md-10 col-lg-10 mx-auto">
+                {% for label in labels %}
+                    <article class="card mb-5 shadow">
+                        <div class="row g-0 d-flex justify-content-center align-items-center">
+                            <div class="col-md-4">
+                                {% if label.image %}
+                                    <img src="{{vich_uploader_asset(label, 'imageFile') | imagine_filter('user_label_thumb') }}" class="img-fluid rounded-start w-100 h-100" alt="{{label.name}}">
+                                {% else %}
+                                    <img src="/images/static/user/labels/default_post_img.png" class="img-fluid rounded-start" alt="{{label.name}}">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h2 class="card-title">{{label.name|u.truncate('60', '...')}}</h2>
+                                    <p class="card-text">{{label.description|u.truncate('80', '...')}}</p>
+                                    <p>
+                                        <span class="text-danger">Catégorie</span> : {{label.category.name}}
+                                    </p>
+
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">Publié {{label.publishedAt|ago}}</small>
+                                    </p>
+
+                                    <a href="{{path('app_user_label_show', {'id':label.id, 'slug': label.slug})}}" class="btn btn-lg btn-primary">Consulter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr class="my-5 text-primary">
+                {% endfor %}
+
+                {# display navigation #}
+                <div class="d-flex justify-content-center align-items-center">
+                    {{ knp_pagination_render(labels) }}
+                </div>
+            </div>
+        </div>
+{% endblock %}
