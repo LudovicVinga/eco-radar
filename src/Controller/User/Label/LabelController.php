@@ -11,13 +11,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
+use Symfony\Component\RateLimiter\RateLimiterFactoryInterface;
 
 #[Route('/user')]
 final class LabelController extends AbstractController
 {
+    private RateLimiterFactoryInterface $apiLimiterLimiter;
+
+    public function __construct(RateLimiterFactoryInterface $apiLimiterLimiter)
+    {
+        $this->apiLimiterLimiter = $apiLimiterLimiter;
+    }
+
     #[Route('/label/index', name: 'app_user_label_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository, LabelRepository $labelRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        // --- RATE LIMITER ---
+        $limiter = $this->apiLimiterLimiter->create($request->getClientIp());
+        $limit = $limiter->consume();
+
+        if (false === $limit->isAccepted()) {
+            throw new TooManyRequestsHttpException('Trop de requêtes, veuillez patienter.');
+        }
+
         $categories = $categoryRepository->findall();
         $query = $labelRepository->findBy(['isPublished' => true], ['publishedAt' => 'DESC']);
 
@@ -54,8 +72,16 @@ final class LabelController extends AbstractController
     }
 
     #[Route('/label/article/{id<\d+>}/{slug}', name: 'app_user_label_show', methods: ['GET'])]
-    public function showLabel(Label $label): Response
+    public function showLabel(Label $label, Request $request): Response
     {
+        // --- RATE LIMITER ---
+        $limiter = $this->apiLimiterLimiter->create($request->getClientIp());
+        $limit = $limiter->consume();
+
+        if (false === $limit->isAccepted()) {
+            throw new TooManyRequestsHttpException('Trop de requêtes, veuillez patienter.');
+        }
+
         return $this->render('pages/user/label/show.html.twig', [
             'label' => $label,
         ]);
