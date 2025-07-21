@@ -10,10 +10,9 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\RateLimiter\RateLimiterFactoryInterface;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/user')]
 final class LabelController extends AbstractController
@@ -75,7 +74,12 @@ final class LabelController extends AbstractController
     public function showLabel(Label $label, Request $request): Response
     {
         // --- RATE LIMITER ---
-        $limiter = $this->apiLimiterLimiter->create($request->getClientIp());
+        // $limiter = $this->apiLimiterLimiter->create($request->getClientIp());
+
+        // Uniquement pour du test, pas en prod.
+        $limiter = $this->apiLimiterLimiter->create(uniqid());
+
+
         $limit = $limiter->consume();
 
         if (false === $limit->isAccepted()) {

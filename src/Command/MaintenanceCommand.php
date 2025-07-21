@@ -2,13 +2,12 @@
 
 namespace App\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 #[AsCommand(
@@ -21,8 +20,7 @@ class MaintenanceCommand extends Command
 
     public function __construct(
         #[Autowire('%kernel.project_dir%')] protected string $projectDir,
-    )
-    {
+    ) {
         parent::__construct();
     }
 
@@ -75,7 +73,7 @@ class MaintenanceCommand extends Command
 
             return Command::INVALID;
         }
-        
+
         return Command::SUCCESS;
     }
 }
