@@ -1,0 +1,28 @@
+<h2>Bonjour Eve !</h2>
+
+<p>Vous avez reçu un message d'un contact PREMIUM provenant de votre application EcoRadar.</p>
+
+<p>Voici ses coordonnés : </p>
+
+<ul>
+    <li>
+        <strong>Identité</strong> : {{contactPremium.firstName}} {{contactPremium.lastName}}
+    </li>
+    <li>
+        <strong>Email pro</strong> : {{contactPremium.email}}
+    </li>
+    <li>
+        <strong>Société</strong> : {{contactPremium.company}}
+    </li>
+    <li>
+        <strong>Téléphone</strong> : {{contactPremium.phone ? contactPremium.phone : 'Le numéro de téléphone n\'a pas été renseigné.'}}
+    </li>
+</ul>
+
+<p>Et voici le message : </p>
+
+<div>
+    {{contactPremium.message|nl2br}}
+</div>
+
+<p>A bientôt !</p>
