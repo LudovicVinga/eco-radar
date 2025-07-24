@@ -96,11 +96,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Setting::class, mappedBy: 'user')]
     private Collection $settings;
 
+    /**
+     * @var Collection<int, ContactPremium>
+     */
+    #[ORM\OneToMany(targetEntity: ContactPremium::class, mappedBy: 'user')]
+    private Collection $contactsPremium;
+
     public function __construct()
     {
         $this->labels = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->settings = new ArrayCollection();
+        $this->contactsPremium = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -308,6 +315,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($setting->getUser() === $this) {
                 $setting->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContactPremium>
+     */
+    public function getContactsPremium(): Collection
+    {
+        return $this->contactsPremium;
+    }
+
+    public function addContactsPremium(ContactPremium $contactsPremium): static
+    {
+        if (!$this->contactsPremium->contains($contactsPremium)) {
+            $this->contactsPremium->add($contactsPremium);
+            $contactsPremium->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContactsPremium(ContactPremium $contactsPremium): static
+    {
+        if ($this->contactsPremium->removeElement($contactsPremium)) {
+            // set the owning side to null (unless already changed)
+            if ($contactsPremium->getUser() === $this) {
+                $contactsPremium->setUser(null);
             }
         }
 

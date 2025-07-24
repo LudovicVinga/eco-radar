@@ -79,7 +79,6 @@ final class LabelController extends AbstractController
         // Uniquement pour du test, pas en prod.
         $limiter = $this->apiLimiterLimiter->create(uniqid());
 
-
         $limit = $limiter->consume();
 
         if (false === $limit->isAccepted()) {
