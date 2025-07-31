@@ -24,7 +24,7 @@
             <div class="col-lg-3 col-md-4 mb-4">
                 <div class="card shadow-lg rounded-4 border-0 bg-light">
                     <div class="card-body p-4 d-flex flex-column align-items-center">
-                        <h5 class="card-title fw-bold mb-2 text-primary text-center text-uppercase letter-spacing-1">Labels</h5>
+                        <h5 class="card-title fw-bold mb-2 text-primary text-center text-uppercase letter-spacing-1">Labels <span class="badge rounded-pill bg-danger text-dark">ADMIN</span></h5>
                         <p class="card-text text-secondary mb-4 fs-3 fw-semibold text-center">
                         {{labels_count}}
                         </p>
@@ -51,6 +51,28 @@
                         {{contacts_count}}
                         </p>
                         <a href="{{path('app_admin_contact_index')}}" class="btn btn-secondary btn-lg rounded-pill px-4 mt-auto w-100">Voir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card shadow-lg rounded-4 border-0 bg-light">
+                    <div class="card-body p-4 d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-2 text-primary text-center text-uppercase letter-spacing-1">Contacts <span class="badge rounded-pill bg-warning text-dark">PREMIUM</span></h5>
+                        <p class="card-text text-secondary mb-4 fs-3 fw-semibold text-center">
+                        {{contacts_premium_count}}
+                        </p>
+                        <a href="{{path('app_admin_contact_premium_index')}}" class="btn btn-secondary btn-lg rounded-pill px-4 mt-auto w-100">Voir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card shadow-lg rounded-4 border-0 bg-light">
+                    <div class="card-body p-4 d-flex flex-column align-items-center">
+                        <h5 class="card-title fw-bold mb-2 text-primary text-center text-uppercase letter-spacing-1">Label <span class="badge rounded-pill bg-warning text-dark">PREMIUM</span></h5>
+                        <p class="card-text text-secondary mb-4 fs-3 fw-semibold text-center">
+                        {{contacts_premium_label_count}}
+                        </p>
+                        <a href="{{path('app_admin_contact_premium_label_index')}}" class="btn btn-secondary btn-lg rounded-pill px-4 mt-auto w-100">Voir</a>
                     </div>
                 </div>
             </div>

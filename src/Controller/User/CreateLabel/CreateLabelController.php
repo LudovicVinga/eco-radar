@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller\User\Home;
+namespace App\Controller\User\CreateLabel;
 
-use App\Entity\ContactPremium;
+use App\Entity\ContactPremiumLabel;
 use App\Entity\User;
-use App\Form\PremiumContactFormType;
+use App\Form\PremiumContactLabelFormType;
 use App\Repository\SettingRepository;
 use App\Service\SendEmailService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,19 +14,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/user')]
-final class HomeController extends AbstractController
+final class CreateLabelController extends AbstractController
 {
     public function __construct(
         private SendEmailService $sendEmailService,
     ) {
     }
 
-    #[Route('/home', name: 'app_user_home', methods: ['GET', 'POST'])]
-    public function index(Request $request, SettingRepository $settingRepository, EntityManagerInterface $entityManager): Response
+    #[Route('/creer/label/', name: 'app_user_create_label', methods: ['GET', 'POST'])]
+    public function create(SettingRepository $settingRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $contactPremium = new ContactPremium();
+        $contactPremiumLabel = new ContactPremiumLabel();
 
-        $form = $this->createForm(PremiumContactFormType::class, $contactPremium);
+        $form = $this->createForm(PremiumContactLabelFormType::class, $contactPremiumLabel);
         $form->handleRequest($request);
 
         /**
@@ -35,29 +35,27 @@ final class HomeController extends AbstractController
         $user = $this->getUser();
 
         if (null != $user) {
-            if ($user->getEmail() == $contactPremium->getEmail()) {
-                $contactPremium->setUser($user);
-            }
+            $contactPremiumLabel->setUser($user);
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $contactPremium->setCreatedAt(new \DateTimeImmutable());
+            $contactPremiumLabel->setCreatedAt(new \DateTimeImmutable());
 
-            $entityManager->persist($contactPremium);
+            $entityManager->persist($contactPremiumLabel);
             $entityManager->flush();
 
             $this->sendEmailService->send([
                 'sender_email' => 'eco-radar@gmail.com',
                 'sender_full_name' => 'Eve Florien',
                 'recipient_email' => 'eco-radar@gmail.com',
-                'subject' => "PREMIUM : un message d'un contact Premium vous a été envoyé.",
-                'html_template' => 'emails/contact_premium.html.twig',
+                'subject' => 'PREMIUM LABEL : un contact vous propose un label.',
+                'html_template' => 'emails/contact_premium_label_create.html.twig',
                 'context' => [
-                    'contactPremium' => $contactPremium,
+                    'contactPremiumLabel' => $contactPremiumLabel,
                 ],
             ]);
 
-            $this->addFlash('success', 'Merci ! Votre message à bien été envoyé, nous reviendrons vers vous très prochainement.');
+            $this->addFlash('success', 'Merci ! Votre label à bien été transmis, nous reviendrons vers vous très prochainement.');
 
             return $this->redirectToRoute('app_user_home');
         }
@@ -66,9 +64,9 @@ final class HomeController extends AbstractController
         $settings = $settingRepository->findAll();
         $setting = $settings[0];
 
-        return $this->render('pages/user/home/index.html.twig', [
-            'form' => $form->createView(),
+        return $this->render('pages/user/create_label/index.html.twig', [
             'setting' => $setting,
+            'form' => $form->createView(),
         ]);
     }
 }

@@ -1,0 +1,29 @@
+<h2>Bonjour Eve !</h2>
+
+<p>Un contact PREMIUM de votre application EcoRadar vous a proposé un label.</p>
+
+<p>Voici ses coordonnés : </p>
+
+<ul>
+    <li>
+        <strong>Email pro</strong> : {{contactPremiumLabel.email}}
+    </li>
+</ul>
+<ul>
+    <li>
+        <strong>Le nom de son label</strong> : {{contactPremiumLabel.name}}
+    </li>
+</ul>
+<ul>
+    <li>
+        <strong>La description de son label</strong> : {{contactPremiumLabel.description}}
+    </li>
+</ul>
+
+<p>Et voici le message : </p>
+
+<div>
+    {{contactPremiumLabel.content ? contactPremiumLabel.content|nl2br : 'Pas de message'}}
+</div>
+
+<p>A bientôt !</p>
