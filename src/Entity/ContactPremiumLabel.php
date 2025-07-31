@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
+use App\Repository\ContactPremiumLabelRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use App\Repository\ContactPremiumLabelRepository;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ContactPremiumLabelRepository::class)]
 #[Vich\Uploadable]
@@ -22,7 +22,6 @@ class ContactPremiumLabel
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-
     #[Assert\NotBlank(message: 'Le nom est obligatoire.')]
     #[Assert\Length(
         max: 255,
@@ -30,7 +29,6 @@ class ContactPremiumLabel
     )]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
-
 
     #[Assert\NotBlank(message: 'La description est obligatoire.')]
     #[Assert\Length(
@@ -42,7 +40,6 @@ class ContactPremiumLabel
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
-
 
     // NOTE: This is not a mapped field of entity metadata, just a simple property.
     #[Assert\File(
@@ -60,9 +57,8 @@ class ContactPremiumLabel
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
-
 
     #[Assert\NotBlank(message: "L'email est obligatoire.")]
     #[Assert\Length(
@@ -128,7 +124,6 @@ class ContactPremiumLabel
         return $this;
     }
 
-
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
@@ -153,7 +148,6 @@ class ContactPremiumLabel
     {
         return $this->imageFile;
     }
-
 
     public function getImage(): ?string
     {
@@ -190,7 +184,6 @@ class ContactPremiumLabel
 
         return $this;
     }
-
 
     public function getEmail(): ?string
     {

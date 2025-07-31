@@ -1,0 +1,122 @@
+{% extends 'themes/base_admin.html.twig' %}
+
+{% block title %}Liste des labels proposés par vos contacts PREMIUM{% endblock %}
+
+{% block description %}Gérez facilement toutes les propositions de vos contacts PREMIUM depuis votre espace administrateur. Visualisez, ou supprimez les pour organiser efficacement votre liste.{% endblock %}
+
+{% block jQuery %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block dataTables %}
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.3.1/datatables.min.css" rel="stylesheet" integrity="sha384-rcK/Hw0a8czqNV8XiNNbA2kqXBypz/reTTu9ewJiCYQRES16Xpl47dKudYItkU7M" crossorigin="anonymous">
+ 
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.3.1/datatables.min.js" integrity="sha384-BE8jgQ18lLIDRFU5irQ26MTXl+tzWCKvu313il+U+Wo2wVTDr47xBIDmggcM21dh" crossorigin="anonymous"></script>
+
+    <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable({
+        language: {
+        url: 'https://cdn.datatables.net/plug-ins/2.3.1/i18n/fr-FR.json'
+    }
+    });
+    } );
+    </script>
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-5 display-5">Liste des labels de vos contacts <span class="badge rounded-pill bg-warning text-dark">PREMIUM</span></h1>
+
+    {% include 'components/alert.html.twig' %}
+
+    <div class="table-responsive">
+        <table id="myTable" class="table table-striped table-hover table-bordered text-center table-secondary">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Logo</th>
+                    <th>Description</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Crée le</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for contactPremiumLabel in contactsPremiumLabel %}
+                    <tr>
+                        <td>{{contactPremiumLabel.name}}</td>
+
+                        <td>
+                            {% if contactPremiumLabel.image %}
+                                <img class="img-fluid" src="{{ vich_uploader_asset(contactPremiumLabel, 'imageFile') | imagine_filter('admin_label_thumb') }}" alt="{{ contactPremiumLabel.name }}">
+                            {% else %}
+                                <span>---</span>
+                            {% endif %}
+                        </td>
+                        
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#contactPremiumLabel-backdrop-{{contactPremiumLabel.id}}">
+                            Consulter
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="contactPremiumLabel-backdrop-{{contactPremiumLabel.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"> {{contactPremiumLabel.name}}</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{contactPremiumLabel.description}}
+                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>{{contactPremiumLabel.email}}</td> 
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#contactPremiumLabelContent-backdrop-{{contactPremiumLabel.id}}">
+                            Consulter
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="contactPremiumLabelContent-backdrop-{{contactPremiumLabel.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"> {{contactPremiumLabel.name}}</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{contactPremiumLabel.content ? contactPremiumLabel.content|nl2br : 'Pas de message'}}
+                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{contactPremiumLabel.createdAt|date()}}</td>
+                        
+                        <td>
+                            <form class="d-inline" action="{{path('app_admin_contact_premium_label_delete', {'id': contactPremiumLabel.id})}}" method="post">
+                                <input type="hidden" name="csrf_token" value="{{csrf_token('delete-contactPremiumLabel-'~contactPremiumLabel.id)}}">
+                                <input type="submit" class="btn btn-sm btn-danger" value="Supprimer" onclick="return confirm('Confirmez la suppression ?')">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

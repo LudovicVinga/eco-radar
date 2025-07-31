@@ -46,14 +46,14 @@
                                 {{ form_widget(form.name, {attr: {'class': 'form-control', 'autofocus':'autofocus'}}) }}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-semibold" for="">Votre email <span class="text-danger">*</span></label>
+                                <label class="form-label fw-semibold" for="premium_contact_label_form_email">Votre email <span class="text-danger">*</span></label>
                                 <div class="text-danger">{{form_errors(form.email)}}</div>
                                 {{ form_widget(form.email, {attr: {'class': 'form-control'}}) }}
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label class="form-label fw-semibold" for="">Description du label <span class="text-danger">*</span></label>
+                            <label class="form-label fw-semibold" for="premium_contact_label_form_description">Description du label <span class="text-danger">*</span></label>
                             <div class="text-danger">{{form_errors(form.description)}}</div>
                             {{ form_widget(form.description, {attr: {'class': 'form-control'}}) }}
                         </div>
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label fw-semibold" for="premium_contact_form_message">Message</label>
+                            <label class="form-label fw-semibold" for="premium_contact_label_form_content">Message</label>
                             <div class="text-danger">{{form_errors(form.content)}}</div>
                             {{ form_widget(form.content, {attr: {'class': 'form-control', 'rows': 5}}) }}
                         </div>
