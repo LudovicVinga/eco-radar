@@ -2,16 +2,16 @@
 
 namespace App\Controller\User\Home;
 
-use App\Entity\ContactPremium;
 use App\Entity\User;
+use App\Entity\ContactPremium;
+use App\Service\SendEmailService;
 use App\Form\PremiumContactFormType;
 use App\Repository\SettingRepository;
-use App\Service\SendEmailService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/user')]
 final class HomeController extends AbstractController
@@ -28,6 +28,7 @@ final class HomeController extends AbstractController
 
         $form = $this->createForm(PremiumContactFormType::class, $contactPremium);
         $form->handleRequest($request);
+
 
         /**
          * @var User
@@ -60,8 +61,9 @@ final class HomeController extends AbstractController
             $this->addFlash('success', 'Merci ! Votre message à bien été envoyé, nous reviendrons vers vous très prochainement.');
 
             return $this->redirectToRoute('app_user_home');
-        }
+        } 
 
+        // Pour le footer
         $settings = $settingRepository->findAll();
         $setting = $settings[0];
 

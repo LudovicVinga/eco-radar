@@ -102,12 +102,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: ContactPremium::class, mappedBy: 'user')]
     private Collection $contactsPremium;
 
+    /**
+     * @var Collection<int, ContactPremiumLabel>
+     */
+    #[ORM\OneToMany(targetEntity: ContactPremiumLabel::class, mappedBy: 'user')]
+    private Collection $contactPremiumLabels;
+
     public function __construct()
     {
         $this->labels = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->settings = new ArrayCollection();
         $this->contactsPremium = new ArrayCollection();
+        $this->contactPremiumLabels = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -345,6 +352,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($contactsPremium->getUser() === $this) {
                 $contactsPremium->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContactPremiumLabel>
+     */
+    public function getContactPremiumLabels(): Collection
+    {
+        return $this->contactPremiumLabels;
+    }
+
+    public function addContactPremiumLabel(ContactPremiumLabel $contactPremiumLabel): static
+    {
+        if (!$this->contactPremiumLabels->contains($contactPremiumLabel)) {
+            $this->contactPremiumLabels->add($contactPremiumLabel);
+            $contactPremiumLabel->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContactPremiumLabel(ContactPremiumLabel $contactPremiumLabel): static
+    {
+        if ($this->contactPremiumLabels->removeElement($contactPremiumLabel)) {
+            // set the owning side to null (unless already changed)
+            if ($contactPremiumLabel->getUser() === $this) {
+                $contactPremiumLabel->setUser(null);
             }
         }
 

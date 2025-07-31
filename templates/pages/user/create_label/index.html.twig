@@ -1,0 +1,84 @@
+{% extends 'themes/base_user.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block description %}Proposez votre label depuis votre espace personnel. Utilisez notre formulaire réservé aux membres pour soumettre vos idées et rejoindre notre réseau de labels.{% endblock %}
+
+{% block keywords %}label, proposer label, espace utilisateur, formulaire, soumission label, utilisateur connecté, administration, espace membre, nouveau label, communauté{% endblock %}
+
+{% block main %}
+
+    <h1 class="display-4 text-center text-primary my-4 fw-bold" 
+        style="text-shadow: 1px 1px 3px rgba(43, 62, 80, 0.5); letter-spacing: 0.05em;">
+        Porposer un label
+    </h1>   
+
+    <div class="container mt-5 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 text-center">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <div class="me-3" style="width:6px; height:36px; background-color: #7566D9; border-radius:3px;"></div>
+                <h2 class="fw-semibold mb-0" style="color: #2C3E50;">Formulaire de <span style="color: #7566D9;">label</span></h2>
+            </div>
+            <p class="lead text-muted">
+                Notre équipe est là pour vous accompagner : Porposez nous vos labels via ce formulaire.
+            </p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5 border-3 border-warning opacity-50">
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="card shadow rounded-4 border-0">
+                    <div class="card-body p-4">
+
+                        {% include 'components/alert.html.twig' %}
+
+                        {{ form_start(form) }}
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold" for="">Nom du label <span class="text-danger">*</span></label>
+                                <div class="text-danger">{{form_errors(form.name)}}</div>
+                                {{ form_widget(form.name, {attr: {'class': 'form-control', 'autofocus':'autofocus'}}) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold" for="">Votre email <span class="text-danger">*</span></label>
+                                <div class="text-danger">{{form_errors(form.email)}}</div>
+                                {{ form_widget(form.email, {attr: {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="form-label fw-semibold" for="">Description du label <span class="text-danger">*</span></label>
+                            <div class="text-danger">{{form_errors(form.description)}}</div>
+                            {{ form_widget(form.description, {attr: {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="admin_label_form_keywords">Image</label>
+                            <div class="text-danger">{{ form_errors(form.imageFile) }}</div>
+                            {{ form_widget(form.imageFile, {'attr': {'class':'form-control my-3'}}) }}
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold" for="premium_contact_form_message">Message</label>
+                            <div class="text-danger">{{form_errors(form.content)}}</div>
+                            {{ form_widget(form.content, {attr: {'class': 'form-control', 'rows': 5}}) }}
+                        </div>
+
+                        <div class="d-grid">
+                            <input formnovalidate type="submit" value="Envoyer" class="btn" style="background-color: #7566D9; color: white; font-weight: 600; box-shadow: 0 2px 8px rgba(117, 102, 217, 0.5);" />
+                        </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
