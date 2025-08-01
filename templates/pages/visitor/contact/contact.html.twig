@@ -1,0 +1,66 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}Contactez-nous | EcoRadar{% endblock %}
+
+{% block body %}
+<section class="position-relative text-white py-5" style="background: url('/images/static/visitor/contact/tablette.jpg') center/cover no-repeat; min-height: 80vh;">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-lg-6">
+        <div class="bg-dark bg-opacity-75 p-5 rounded-4 shadow-lg">
+          <h6 class="text-uppercase text-warning mb-2 small">Un devis gratuit ou plus d’informations ?</h6>
+          <h2 class="fw-bold mb-4">Contactez-nous !</h2>
+
+          {{ form_start(form) }}
+            <div class="row g-3">
+              <div class="col-md-6">
+                {{ form_row(form.nom, {
+                  attr: {'class': 'form-control form-control-lg rounded-pill bg-transparent border-light text-white', 'placeholder': 'Nom*'}
+                }) }}
+              </div>
+              <div class="col-md-6">
+                {{ form_row(form.prenom, {
+                  attr: {'class': 'form-control form-control-lg rounded-pill bg-transparent border-light text-white', 'placeholder': 'Prénom*'}
+                }) }}
+              </div>
+              {# <div class="col-md-6">
+                {{ form_row(form.societe, {
+                  attr: {'class': 'form-control form-control-lg rounded-pill bg-transparent border-light text-white', 'placeholder': 'Société (facultatif)'}
+                }) }} #}
+              </div>
+              <div class="col-md-6">
+                {{ form_row(form.telephone, {
+                  attr: {'class': 'form-control form-control-lg rounded-pill bg-transparent border-light text-white', 'placeholder': 'Téléphone*'}
+                }) }}
+              </div>
+              <div class="col-md-12">
+                {{ form_row(form.email, {
+                  attr: {'class': 'form-control form-control-lg rounded-pill bg-transparent border-light text-white', 'placeholder': 'E-mail*'}
+                }) }}
+              </div>
+              <div class="col-md-12">
+                {{ form_row(form.message, {
+                  attr: {'class': 'form-control rounded-4 bg-transparent border-light text-white', 'rows': 4, 'placeholder': 'Message*'}
+                }) }}
+              </div>
+              <div class="col-md-12">
+                <div class="form-check text-white small">
+                  {{ form_row(form.consentement, {
+                    label: "J’ai lu et j’accepte la politique de confidentialité",
+                    attr: {'class': 'form-check-input'}
+                  }) }}
+                </div>
+              </div>
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-light rounded-pill px-5 py-2">
+                  Envoyer le message <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          {# {{ form_end(form) }} #}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

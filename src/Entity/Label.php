@@ -61,6 +61,13 @@ class Label
     #[ORM\Column]
     private ?bool $isPublished = false;
 
+    #[ORM\Column(type: 'float', nullable: true)]
+    private ?float $latitude = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    private ?float $longitude = null;
+
+
     // NOTE: This is not a mapped field of entity metadata, just a simple property.
     #[Assert\File(
         maxSize: '3M',

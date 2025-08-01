@@ -1,0 +1,363 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}Rejoindre EcoRadar - Labels éthiques{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+    body {
+      padding-top: 70px; /* ou ajuste selon la hauteur exacte de ta navbar */
+    }
+  </style>
+
+  <style>
+    .benefits-section {
+      background-color: #ffffff;
+      padding: 3rem 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .benefits-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .benefits-title {
+      color: #21214D;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .benefits-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem;
+      margin-bottom: 0.8rem;
+      background-color: #F5F5F5;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border-left: 4px solid #8C77B0;
+    }
+
+    .benefit-item:hover {
+      background-color: #e8e4f5;
+      transform: translateX(5px);
+    }
+
+    .benefit-icon {
+      font-size: 1.2rem;
+      color: #FBB03B;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      font-weight: bold;
+    }
+
+    .benefit-text {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #21214D;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-title {
+        font-size: 1.5rem;
+      }
+
+      .benefit-text {
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <style>
+    :root {
+      --bleu-fonce: #21214D;
+      --violet: #8C77B0;
+      --ambre: #FBB03B;
+      --gris-clair: #F5F5F5;
+    }
+    body {
+      
+      font-family: 'Poppins', sans-serif;
+      background: var(--gris-clair);
+      color: var(--bleu-fonce);
+      margin: 0;
+      padding: 0  ;
+      line-height: 1.6;
+    }
+    header {
+      background-color: var(--violet);
+      padding: 50px 20px;
+      text-align: center;
+      color: white;
+    }
+    
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+    section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: var(--bleu-fonce);
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--ambre);
+      padding-bottom: 8px;
+      font-weight: 600;
+    }
+    ul {
+      padding-left: 25px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .cta a {
+      background: var(--bleu-fonce);
+      color: white;
+      padding: 15px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .cta a:hover {
+      background: var(--ambre);
+      color: var(--bleu-fonce);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(251, 176, 59, 0.4);
+    }
+    footer {
+      background: var(--bleu-fonce);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <header>
+    <h1>Rejoignez EcoRadar</h1>
+    <p>Une plateforme gratuite pour valoriser votre label éthique</p>
+  </header>
+
+  <section>
+    <h2>Pourquoi rejoindre ?</h2>
+    <ul>
+      <li>Visibilité gratuite et ciblée sur notre moteur éthique</li>
+      <li>Présentation complète de vos critères, logos, secteurs</li>
+      <li>Référencement intelligent et géolocalisé</li>
+    </ul>
+
+    <h2>Ce que nous vous demandons</h2>
+    <ul>
+      <li>Votre logo HD</li>
+      <li>Une description de vos critères et périmètre</li>
+      <li>Une fiche d'identité du label (PDF ou lien)</li>
+    </ul>
+
+    <h2>Ce que vous gagnez</h2>
+    <ul>
+      <li>Visibilité accrue auprès d’un public engagé</li>
+      <li>Référencement dans une base de données open-source</li>
+      <li>Mises à jour faciles et gratuites à tout moment</li>
+    </ul>
+
+    <div class="cta">
+      <p>📩 Envoyez vos éléments à :</p>
+      <a href="mailto:label@ecoradar.fr">label@ecoradar.fr</a>
+    </div>
+  </section>
+
+  <section id="benefits" class="benefits-section">
+  <div class="benefits-container">
+    <h2 class="benefits-title">Pourquoi choisir EcoRadar ?</h2>
+    
+    <ul class="benefits-list">
+      <li class="benefit-item">
+        <span class="benefit-icon">✓</span>
+        <span class="benefit-text">Un guide simple pour comprendre les labels</span>
+      </li>
+      <li class="benefit-item">
+        <span class="benefit-icon">✓</span>
+        <span class="benefit-text">Un comparateur pour faire le bon choix</span>
+      </li>
+      <li class="benefit-item">
+        <span class="benefit-icon">✓</span>
+        <span class="benefit-text">Des infos neutres, fiables et à jour</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="faq" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4 fw-semibold text-dark">
+      🌱 Pourquoi rejoindre EcoRadar ?
+    </h2>
+
+    <div class="accordion accordion-flush" id="faqAccordion">
+
+      <div class="accordion-item mb-3 border rounded shadow-sm">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            Un outil gratuit, collaboratif, qui cartographie tous les labels écoresponsables
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            EcoRadar est un outil qui vous aide à vous repérer dans la jungle des labels. Il rassemble, sans juger, les labels existants pour les rendre comparables, accessibles et transparents. Tout ça, gratuitement.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item mb-3 border rounded shadow-sm">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            À quoi ça sert ?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            EcoRadar simplifie la vie des consommateurs, marques et journalistes en centralisant les informations utiles sur chaque label : critères, secteurs, zone géographique, engagements...
+          </div>
+        </div>
+      </div>
+
+      {# Tu peux ajouter d'autres blocs ici si besoin #}
+
+    </div>
+  </div>
+</section>
+
+<section id="infos-pratiques" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Questions fréquentes</h2>
+
+    <div class="accordion accordion-flush" id="faqAccordion">
+
+      <div class="accordion-item mb-3 border rounded shadow-sm">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            🌱 Pourquoi choisir EcoRadar ?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            EcoRadar identifie les marques réellement engagées à l'aide d’un système de notation indépendant, basé sur des critères environnementaux, sociaux et de transparence.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item mb-3 border rounded shadow-sm">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            🔍 Comment sont sélectionnées les marques ?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Sur la base de labels reconnus (GOTS, B Corp...), certifications, audit de transparence et scoring algorithmique croisé avec des données publiques.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item mb-3 border rounded shadow-sm">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+            💬 Est-ce vraiment indépendant ?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Oui. EcoRadar n’est affilié à aucune marque et ne perçoit pas de commission sur les ventes.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item border rounded shadow-sm">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+            🚀 Pour le grand public ou les pros ?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Les deux. Une version gratuite pour le grand public et une version Pro avec filtres avancés pour les acheteurs B2B.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="cta" class="py-5 bg-primary text-white text-center">
+  <div class="container" style="max-width: 700px;">
+    <h2 class="mb-3 fs-2 d-flex justify-content-center align-items-center gap-2">
+      🚀 Rejoignez la communauté EcoRadar
+    </h2>
+    <p class="mb-4 fs-5">
+      Recevez les dernières infos sur les labels, les marques engagées et nos mises à jour.
+    </p>
+
+    <form method="POST" action="/abonnement" class="row g-3 justify-content-center needs-validation" novalidate>
+      <div class="col-md-8">
+        <label for="eco-email" class="visually-hidden">Votre email</label>
+        <input 
+          type="email"
+          class="form-control form-control-lg"
+          id="eco-email"
+          name="email"
+          placeholder="Votre email"
+          required
+        >
+        <div class="invalid-feedback text-start">
+          Merci d’entrer une adresse email valide.
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-warning btn-lg w-100 fw-semibold">
+          Je m'abonne
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+  {# <footer>
+    <p>© {{ "now"|date("Y") }} EcoRadar | Tous droits réservés</p>
+  </footer> #}
+{% endblock %}
+

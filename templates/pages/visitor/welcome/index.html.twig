@@ -1,74 +1,29 @@
-{% extends "themes/base_visitor.html.twig" %}
+{% extends 'themes/base_visitor.html.twig' %}
 
 {% block title %}Bienvenue sur EcoRadar{% endblock %}
 
-{% block description %}Trouvez et comparez facilement les labels responsables pour vos achats durables. Découvrez des certifications fiables, engagées pour l’environnement et l’éthique. Explorez maintenant !{% endblock %}
-
-{% block keywords %}labels éthiques, annuaire labels, labels responsables, certifications éthiques, consommation durable, labels écologiques, labels bio, labels équitables, labels environnement, guide labels, achat responsable{% endblock %}
-
 {% block main %}
-    <h1 class="text-center mb-3 display-5 text-mainText fw-bold fst-italic">EcoRadar</h1>
+<section class="position-relative text-white text-center fade-in-on-scroll"
+         style="background: url('{{ asset('images/static/visitor/pexels-ron-lach-8306367.jpg') }}') center/cover no-repeat;
+                height: 80vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 2rem;
+                overflow: hidden;
+                margin: 2rem;">
 
-    {# hero-section #}
-    <header>
-        <p class="text-center my-3">hero section ici</p>
-    </header>
+    <div class="bg-dark bg-opacity-50 p-4 rounded-5 shadow-lg" style="max-width: 700px;">
+        <h1 class="display-5 fw-bold mb-3">Repérez les labels de mode éthique</h1>
+        <p class="lead mb-4">Découvrez les certifications du monde entier<br>et soutenez une mode responsable.</p>
+        <a href="{{ path('landing_labels') }}" class="btn btn-lg text-black" style="background-color: #f4b860;">Découvrir les labels</a>
 
-    {# about-us section #}
-    <section class="bg-light py-5">
-        <h2 class="text-center my-3 display-5">EcoRadar, c'est quoi ?</h2>
-
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <img class="img-fluid" src="/images/static/visitor/Logo_ecoRadar.jpg" alt="logo ecoRadar">
-                </div>
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi hic totam dolore blanditiis dolorem non in molestiae! Necessitatibus iste ratione ea reprehenderit assumenda dicta iusto porro commodi? Est, iure non.
-                        Quas explicabo ducimus, rem totam impedit earum iste est vitae nam rerum nulla, temporibus id magnam fugiat quis odit eius quibusdam itaque eligendi. Placeat, minus officiis consequatur assumenda incidunt nisi?
-                        Accusantium reprehenderit nobis labore quidem dicta itaque molestias sit ipsa, tempore excepturi repudiandae nisi minus quam aliquid nostrum amet unde nemo, ratione facilis aut. Libero repellat iure hic est in.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {# last-labels section #}
-    <section class="py-3">
-        <h2 class="text-center my-3 display-5">Les derniers labels</h2>
-
-        <div class="container">
-            <div class="row">
-                {% for label in labels %}
-                    <div class="col-lg-4">
-                        <div class="card my-5 shadow">
-                            <div class="card-header bg-warning text-white text-uppercase">
-                                <h4><strong>{{label.name|u.truncate('25', '...')}}</strong></h4>
-                            </div>
-                            <div class="card-body">
-                                {% if label.image %}
-                                    <img src="{{vich_uploader_asset(label, 'imageFile') | imagine_filter('user_label_thumb') }}" class="img-fluid rounded-start card-body" alt="{{label.name}}">
-                                {% else %}
-                                    <img src="/images/static/user/labels/default_post_img.png" class="img-fluid rounded-start card-body" alt="{{label.name}}">
-                                {% endif %}
-                                <hr class="text-danger">
-                                <p class="mt-3">
-                                    <span class="text-danger text-decoration-underline">Catégorie</span> : {{label.category.name}}
-                                </p>
-
-                                <p class="text-center">{{label.description}}</p>
-
-                                <p>Publié {{label.publishedAt|ago}}</p>
-                                
-                                <p>
-                                    <a href="" class="btn btn-secondary">Consulter le label</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
+
+
+{% block body %}
+{# Tu peux ajouter du contenu ici si nécessaire. #}
+{% endblock %}
+

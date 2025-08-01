@@ -1,16 +1,49 @@
-{% extends 'base.html.twig' %}
+{% extends 'themes/base_visitor.html.twig' %}
 
-{% block title %}Accueil - EcoRadar{% endblock %}
+{% block title %}Accueil | EcoRadar{% endblock %}
 
-{% block body %}
-    <div class="text-center">
-        <h1 class="mb-4" style="font-family: 'Poppins', sans-serif;">Bienvenue sur EcoRadar</h1>
-        <video class="mb-4" controls style="max-width: 100%; border-radius: 8px;">
-            <source src="{{ asset('videos/promo.mp4') }}" type="video/mp4">
-            Votre navigateur ne prend pas en charge la vidéo.
-        </video>
-        <a href="{{ path('explorer') }}" class="btn btn-warning btn-lg rounded-pill">
-            Découvrir les labels
-        </a>
-    </div>
+{% block main %}
+    <h1 class="text-center mb-3 display-5 text-mainText fw-bold fst-italic">EcoRadar</h1>
+
+    {# Section Héro #}
+   <section class="hero-header text-center py-5 my-5" style="background: url('/images/votre-image.jpg') center center / cover no-repeat;">
+  <div class="container text-white">
+    <h1 class="display-4 fw-bold">Repérez les labels de mode éthique</h1>
+    <p class="lead">Découvrez les certifications du monde entier et <strong>soutenez une mode responsable</strong>.</p>
+    <a href="{{ path('labels_landing') }}" class="btn btn-warning btn-lg mt-3">Découvrir les labels</a>
+  </div>
+</section>
+
+
+    {# Section Pourquoi EcoRadar #}
+    <section class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-4 fw-bold">Pourquoi choisir EcoRadar ?</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                    <h4>Base de données mondiale</h4>
+                    <p>Accédez à des labels de confiance vérifiés à l'échelle internationale.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-leaf fa-3x text-success mb-3"></i>
+                    <h4>Engagement éthique</h4>
+                    <p>EcoRadar met en lumière les certifications respectueuses de l’environnement et des droits humains.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-search fa-3x text-info mb-3"></i>
+                    <h4>Recherche simplifiée</h4>
+                    <p>Trouvez rapidement les labels qui correspondent à vos valeurs grâce à nos filtres intelligents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Appel à l'action final #}
+    <section class="text-center bg-primary text-white py-5 mt-5">
+        <div class="container">
+            <h3 class="mb-3">Prêt à consommer plus responsable ?</h3>
+            <a href="{{ path('explorer') }}" class="btn btn-light btn-lg">Explorer les labels</a>
+        </div>
+    </section>
 {% endblock %}
