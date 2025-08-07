@@ -48,12 +48,7 @@ final class WelcomeController extends AbstractController
             'labels' => $labels,
         ]);
     }
-
-    #[Route('/visualisations', name: 'visualisations')]
-    public function visualisations(): Response
-    {
-        return $this->render('pages/visitor/visualisations.html.twig');
-    }
+  
 
     #[Route('/labels/rejoindre', name: 'landing_labels')]
     public function labelsLanding(): Response
@@ -61,5 +56,17 @@ final class WelcomeController extends AbstractController
         return $this->render('pages/visitor/labels_landing.html.twig');
     }
 
-    
+    #[Route('/visualisations', name: 'app_visualisations')]
+   public function visualisations(): Response
+  {
+    return $this->render('pages/visitor/visualisations.html.twig');
+  }
+
+   #[Route('/secteurs', name: 'app_sectors')]
+  public function index(): Response
+  {
+    return $this->render('pages/sector/index.html.twig');
+  }
+
+
 }
