@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,11 +16,17 @@ class VisitorContactFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
+            ->add('nom', TextType::class)
+            ->add('prenom', TextType::class)
+            ->add('societe', TextType::class, ['required' => false])
+            ->add('telephone', TextType::class)
             ->add('email', EmailType::class)
             ->add('message', TextareaType::class)
-        ;
+            ->add('consentement', CheckboxType::class, [
+                'mapped' => false,
+                'label' => 'J’ai lu et j’accepte la politique de confidentialité',
+                'required' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

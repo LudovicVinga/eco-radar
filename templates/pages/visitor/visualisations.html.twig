@@ -1,0 +1,87 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/visualisations.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+{% endblock %}
+
+
+{% block title %}Visualisations - EcoRadar{% endblock %}
+
+{% block body %}
+<section class="visualisation-pro">
+  <header class="visu-header">
+    <h1>Visualisation <span class="violet">intelligente</span> des labels</h1>
+    <p class="sous-titre">Donnez du sens à vos décisions d'achat grâce à nos outils data</p>
+  </header>
+
+  <div class="visu-grid">
+    <div class="visu-card visu-card--wide">
+      <div class="visu-graph-container">
+        <div id="label-map" style="height: 400px; border-radius: 8px; overflow: hidden;"></div>
+
+          <div class="graph-overlay"><span class="picto">🌍</span><p>Cartographie des labels certifiés</p></div>
+        </div>
+      </div>
+      <div class="visu-legend">
+        <h2><span class="picto">🔎</span> Filtres avancés</h2>
+        <div class="filter-group">
+          <div class="filter-item ">Textile</div>
+          <div class="filter-item">Cosmétique</div>
+          <div class="filter-item">Alimentaire</div>
+        </div>
+        <a href="#" class="cta">Exporter les données</a>
+        {# <a href="{{ path('app_sectors') }}" class="cta">Visualisation Secteurs</a> #}
+      </div>
+    </div>
+
+    <div class="visu-card">
+      <h2><span class="picto">📈</span> Analyse comparative</h2>
+      <div class="graph-container">
+        <div class="placeholder-graph" style="background-color: #F5F5F5; height: 200px;">
+          <div class="graph-overlay"><p>Comparatif par critères RSE</p></div>
+        </div>
+      </div>
+      <div class="kpi-container">
+        <div class="kpi"><div class="kpi-value" style="color: #8C77B0;">78%</div><div class="kpi-label">Labels vérifiés</div></div>
+        <div class="kpi"><div class="kpi-value" style="color: #FBB03B;">24</div><div class="kpi-label">Nouveaux (2024)</div></div>
+      </div>
+    </div>
+
+    <div class="visu-card">
+      <h2><span class="picto">⚙️</span> Mon tableau de bord</h2>
+      <ul class="dashboard-list">
+        <li><span class="badge" style="background-color: #8C77B0;">5</span><span>Alertes non lues</span></li>
+        <li><span class="badge" style="background-color: #FBB03B;">12</span><span>Favoris</span></li>
+        <li><span class="badge" style="background-color: #21214D;">3</span><span>Rapports sauvegardés</span></li>
+      </ul>
+      <a href="#" class="cta-secondary">Personnaliser</a>
+    </div>
+  </div>
+
+  <div class="engagement-band" style="background-color: #21214D;">
+    <p>Chez EcoRadar, nous transformons la <strong style="color: #FBB03B;">complexité</strong> en <strong style="color: #8C77B0;">opportunités business</strong>.</p>
+  </div>
+</section>
+
+
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const map = L.map('label-map').setView([48.8566, 2.3522], 5); // Paris centre
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      // Exemple de marqueurs de labels
+      L.marker([48.8566, 2.3522]).addTo(map).bindPopup('Label A (Paris)');
+      L.marker([45.75, 4.85]).addTo(map).bindPopup('Label B (Lyon)');
+    });
+  </script>
+{% endblock %}

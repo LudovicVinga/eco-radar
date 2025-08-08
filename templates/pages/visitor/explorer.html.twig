@@ -1,0 +1,61 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/explorer.css') }}">
+{% endblock %}
+
+
+{% block title %}Explorer - EcoRadar{% endblock %}
+
+{% block body %}
+<section class="explorer-professionnel">
+  <header class="explorer-header">
+    <h1>Explorer <span class="accent">l'éthique réelle</span></h1>
+    <p class="sous-titre">Votre plateforme d'intelligence sectorielle pour décrypter les labels et sourcer responsable</p>
+  </header>
+
+  <div class="explorer-grid">
+    <div class="explorer-card explorer-card--main">
+      <div class="card-visuel">
+        <div class="carte-interactive-placeholder"><span class="picto">🗺️</span></div>
+      </div>
+      <div class="card-contenu">
+        <h2>Cartographie des labels</h2>
+        <ul class="checklist">
+          <li>Filtrez par <strong>réglementation</strong> (REACH, AGEC...)</li>
+          <li>Comparez les <strong>exigences</strong> par pays/matière</li>
+          <li>Identifiez les <strong>risques greenwashing</strong></li>
+        </ul>
+       <a href="{{ path('app_visualisations') }}" class="cta-primaire">Accéder à la cartographie</a>
+      </div>
+    </div>
+
+    <div class="explorer-card">
+      <h2><span class="picto">🔔</span> Veille normative</h2>
+      <p>Alertes en temps réel sur les évolutions :</p>
+      <div class="badge-container">
+        <span class="badge badge--urgence">Nouveau</span><span>Loi anti-gaspillage textile (2025)</span>
+      </div>
+      <div class="badge-container">
+        <span class="badge badge--alerte">Critique</span><span>Révision du référentiel GOTS</span>
+      </div>
+      <a href="#" class="cta-secondaire">Configurer mes alertes</a>
+    </div>
+
+    <div class="explorer-card">
+      <h2><span class="picto">📊</span> Benchmark sectoriel</h2>
+      <p>Accédez aux indicateurs clés :</p>
+      <div class="kpi-container">
+        <div class="kpi"><div class="kpi-valeur">78%</div><div class="kpi-texte">Labels fiables en Europe</div></div>
+        <div class="kpi"><div class="kpi-valeur">42</div><div class="kpi-texte">Nouveaux référentiels (2024)</div></div>
+      </div>
+      <a href="#" class="cta-secondaire">Télécharger le rapport</a>
+    </div>
+  </div>
+
+  <div class="engagement-band">
+    <p>Chez EcoRadar, nous <strong>auditons</strong> les labels pour vous, afin que vous puissiez <strong>acheter</strong> et <strong>produire</strong> en confiance.</p>
+  </div>
+</section>
+{% endblock %}

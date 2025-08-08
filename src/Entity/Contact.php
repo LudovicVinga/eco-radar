@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,85 +14,84 @@ class Contact
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contacts')]
-    private ?User $user = null;
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank]
+    private ?string $nom = null;
 
-    #[Assert\NotBlank(message: 'Le prénom est obligatoire.')]
-    #[Assert\Length(
-        max: 255,
-        maxMessage: 'Le prénom ne doit pas dépasser {{ limit }} caractères.',
-    )]
-    #[ORM\Column(length: 255)]
-    private ?string $firstName = null;
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank]
+    private ?string $prenom = null;
 
-    #[Assert\NotBlank(message: 'Le nom est obligatoire.')]
-    #[Assert\Length(
-        max: 255,
-        maxMessage: 'Le nom ne doit pas dépasser {{ limit }} caractères.',
-    )]
-    #[ORM\Column(length: 255)]
-    private ?string $lastName = null;
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $societe = null;
 
-    #[Assert\NotBlank(message: "L'email est obligatoire.")]
-    #[Assert\Length(
-        max: 255,
-        maxMessage: 'L\'email ne doit pas dépasser {{ limit }} caractères.',
-    )]
-    #[Assert\Email(
-        message: 'L\'email est invalide.',
-    )]
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 20)]
+    #[Assert\NotBlank]
+    private ?string $telephone = null;
+
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank]
+    #[Assert\Email]
     private ?string $email = null;
 
-    #[Assert\NotBlank(message: 'Le message est obligatoire.')]
-    #[Assert\Length(
-        max: 1500,
-        maxMessage: 'Le message ne doit pas dépasser {{ limit }} caractères.',
-    )]
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank]
     private ?string $message = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\ManyToOne]
+    private ?User $user = null;
+
+    // --- Getters & Setters ---
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getNom(): ?string
     {
-        return $this->user;
+        return $this->nom;
     }
 
-    public function setUser(?User $user): static
+    public function setNom(string $nom): static
     {
-        $this->user = $user;
-
+        $this->nom = $nom;
         return $this;
     }
 
-    public function getFirstName(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->firstName;
+        return $this->prenom;
     }
 
-    public function setFirstName(string $firstName): static
+    public function setPrenom(string $prenom): static
     {
-        $this->firstName = $firstName;
-
+        $this->prenom = $prenom;
         return $this;
     }
 
-    public function getLastName(): ?string
+    public function getSociete(): ?string
     {
-        return $this->lastName;
+        return $this->societe;
     }
 
-    public function setLastName(string $lastName): static
+    public function setSociete(?string $societe): static
     {
-        $this->lastName = $lastName;
+        $this->societe = $societe;
+        return $this;
+    }
 
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): static
+    {
+        $this->telephone = $telephone;
         return $this;
     }
 
@@ -105,7 +103,6 @@ class Contact
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -117,7 +114,6 @@ class Contact
     public function setMessage(string $message): static
     {
         $this->message = $message;
-
         return $this;
     }
 
@@ -126,10 +122,20 @@ class Contact
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+        return $this;
+    }
 
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
         return $this;
     }
 }
