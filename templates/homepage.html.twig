@@ -6,13 +6,23 @@
     <h1 class="text-center mb-3 display-5 text-mainText fw-bold fst-italic">EcoRadar</h1>
 
     {# Section Héro #}
-   <section class="hero-header text-center py-5 my-5" style="background: url('/images/votre-image.jpg') center center / cover no-repeat;">
-  <div class="container text-white">
-    <h1 class="display-4 fw-bold">Repérez les labels de mode éthique</h1>
-    <p class="lead">Découvrez les certifications du monde entier et <strong>soutenez une mode responsable</strong>.</p>
-    <a href="{{ path('labels_landing') }}" class="btn btn-warning btn-lg mt-3">Découvrir les labels</a>
-  </div>
+  <section class="hero-section">
+    <div class="video-background">
+        <iframe 
+            src="https://youtu.be/3_FaP7WxI9E?si=oV3M5WEASb2Lf57V" 
+            frameborder="0" 
+            allow="autoplay; fullscreen" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="hero-content">
+        <h1>Repérez les labels de mode éthique</h1>
+        <p>Découvrez les certifications du monde entier et soutenez une mode responsable.</p>
+        <a href="{{ path('labels_landing') }}" class="btn btn-warning">Découvrir les labels</a>
+    </div>
 </section>
+
 
 
     {# Section Pourquoi EcoRadar #}
