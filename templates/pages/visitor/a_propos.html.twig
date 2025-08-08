@@ -1,0 +1,60 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/a_propos.css') }}">
+{% endblock %}
+   
+{% block title %}À propos - EcoRadar{% endblock %}
+
+{% block body %}
+<section class="about-ecoradar">
+  <header class="about-hero" style="background-color: #21214D;">
+    <div class="hero-content">
+      <h1>EcoRadar,le compas de la mode responsable</h1>
+      <p class="hero-subtitle">Plateforme indépendante de vérification et de valorisation des engagements éthiques</p>
+    </div>
+  </header>
+
+  <div class="value-grid">
+    <div class="value-card" style="border-top: 4px solid #8C77B0;">
+      <h2><span style="color: #8C77B0;">●</span> Notre raison d'être</h2>
+      <p>Rétablir la confiance dans les claims écologiques en analysant objectivement les labels et leurs critères.</p>
+      <ul class="value-list">
+        <li>Audit des certifications existantes</li>
+        <li>Décryptage des chaînes d'approvisionnement</li>
+        <li>Notation transparente</li>
+      </ul>
+    </div>
+
+    <div class="value-card" style="border-top: 4px solid #FBB03B;">
+      <h2><span style="color: #FBB03B;">●</span> Comment ça marche ?</h2>
+      <p>Une méthodologie rigoureuse en 3 étapes :</p>
+      <ol class="process-steps">
+        <li><strong>Collecte</strong> des données labels</li>
+        <li><strong>Vérification</strong> par notre comité d'experts</li>
+        <li><strong>Restitution</strong> claire via nos outils</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="stats-band" style="background-color: #21214D; color: white;">
+    <div class="stat-item"><div class="stat-number" style="color: #FBB03B;">150+</div><div class="stat-label">Labels analysés</div></div>
+    <div class="stat-item"><div class="stat-number" style="color: #FBB03B;">92%</div><div class="stat-label">Taux de confiance</div></div>
+    <div class="stat-item"><div class="stat-number" style="color: #FBB03B;">18</div><div class="stat-label">Pays couverts</div></div>
+  </div>
+
+  <div class="cta-container">
+    <div class="cta-card" style="background-color: rgba(140, 119, 176, 0.1);">
+      <h3>Vous êtes un label ?</h3>
+      <p>Rejoignez notre référentiel et augmentez votre visibilité auprès des marques engagées.</p>
+      <a href="#" class="cta-button" style="background-color: #21214D;">S'inscrire</a>
+    </div>
+    <div class="cta-card" style="background-color: rgba(251, 176, 59, 0.1);">
+      <h3>Vous êtes une marque ?</h3>
+      <p>Accédez à notre base de données complète et à nos outils de sourcing.</p>
+      <a href="#" class="cta-button" style="background-color: #FBB03B; color: #21214D;">Découvrir la version pro</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

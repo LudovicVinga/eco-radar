@@ -61,12 +61,17 @@ final class ContactController extends AbstractController
             return $this->redirectToRoute('app_visitor_contact_create');
         }
 
-        $settings = $settingRepository->findAll();
-        $setting = $settings[0];
+       $setting = $settingRepository->findOneBy([], ['id' => 'ASC']);
+
+       
+
 
         return $this->render('pages/visitor/contact/create.html.twig', [
             'form' => $form->createView(),
             'setting' => $setting,
         ]);
+
+        
     }
+
 }

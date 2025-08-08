@@ -1,70 +1,171 @@
-{% extends 'themes/base_visitor_auth_registration.html.twig' %}
+{% extends 'themes/base_visitor.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion | Portail Professionnel EcoRadar{% endblock %}
 
-{% block description %}Accédez à votre compte en toute sécurité. Connectez-vous pour profiter de tous nos services et gérer facilement vos informations personnelles.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #21214D;
+            --lavender: #8C77B0;
+            --sunshine: #FBB03B;
+            --light-bg: #F5F5F5;
+        }
 
-{% block keywords %}connexion, login, accès, authentification, compte, espace membre, identifiant, mot de passe, sécurité, se connecter, page de connexion, utilisateur, accès sécurisé, connexion compte{% endblock %}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-{% block main %}
+        .auth-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem;
+        }
 
-    {# title #}
-    <div class="text-center mb-3">
-        <h1 class="display-5 text-mainText fw-bold fst-italic">CONNEXION</h1>
-        <h4>Connectez-vous et vivez l’actualité EcoRadar au plus près</h4>
-    </div>
+        .login-hero {
+            background: linear-gradient(135deg, rgba(33,33,77,0.03) 0%, rgba(140,119,176,0.05) 100%);
+            border-radius: 16px;
+            padding: 3rem;
+        }
 
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-lg-6 text-center d-flex flex-column justify-content-center align-items-center">
-                {# Img #}
-                <img src="/images/static/visitor/Logo_ecoRadar.jpg" class="img-fluid border border-5 border-warning rounded-circle" alt="Logo EcoRadar">
-            </div>
+        .login-title {
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-bottom: 1.5rem;
+        }
 
-            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center">
-                {# Form #}
-                <form method="post" class="login-form">
+        .login-subtitle {
+            color: var(--lavender);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .form-control {
+            border: 1px solid #e0e0e0;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+        }
+
+        .form-control:focus {
+            border-color: var(--lavender);
+            box-shadow: 0 0 0 0.25rem rgba(140,119,176,0.15);
+        }
+
+        .btn-login {
+            background-color: var(--lavender);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-login:hover {
+            background-color: var(--deep-blue);
+            transform: translateY(-2px);
+        }
+
+        .remember-me {
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background-color: var(--deep-blue);
+            color: white;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+
+        .graphic-placeholder {
+            background-color: rgba(251,176,59,0.08);
+            border-radius: 12px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(33,33,77,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .login-hero {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main class="auth-container">
+    <div class="row g-4">
+        <!-- Left Column - Form -->
+        <div class="col-lg-6">
+            <div class="login-hero h-100">
+                <div class="text-center mb-5">
+                    <img src="{{ asset('images/logo_ecoradar.svg') }}" alt="EcoRadar" style="height: 50px;" class="mb-4">
+                    <h1 class="login-title display-5 fw-bold">Accédez à votre espace professionnel</h1>
+                    <p class="login-subtitle">Votre portail d'analyse et de gestion des engagements éthiques</p>
+                </div>
+
                 {% if error %}
-                    <div class="text-center alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    <div class="alert alert-danger">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
                 {% endif %}
 
-                {% include 'components/alert.html.twig' %}
-
-                <div class="mb-3">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                </div>
-
-                <div class="mb-3">
-                    <label for="inputPassword">Mot de passe</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-lg-6 my-2 text-md-start text-center">
-                        <label>
-                            <input type="checkbox" name="_remember_me"> Se souvenir de moi
-                        </label>
+                <form method="POST" action="{{ path('app_login') }}">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email professionnel</label>
+                        <input type="email" class="form-control" id="email" name="_username" placeholder="exemple@votredomaine.com" required autocomplete="email">
                     </div>
-                    <div class="col-lg-6 my-2 text-md-end text-center">
-                        <a href="{{path('app_forgot_password_request')}}">Mot de passe oublié?</a>
-                    </div>
-                </div>
 
-                <div>
-                    <button formnovalidate class="btn btn-lg btn-warning w-100" type="submit">
-                        Se connecter
-                    </button>
-                </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" name="_password" required autocomplete="current-password">
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remember" name="_remember_me">
+                            <label class="form-check-label remember-me" for="remember">Se souvenir de moi</label>
+                        </div>
+                        <a href="{{ path('app_forgot_password_request') }}" class="text-decoration-none small" style="color: var(--lavender);">Mot de passe oublié ?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-login mb-4">Se connecter</button>
+
+                    <div class="text-center pt-3">
+                        <p class="mb-0">Pas encore membre ? <a href="{{ path('app_register') }}" class="text-decoration-none fw-bold" style="color: var(--sunshine);">Créer un compte</a></p>
+                    </div>
                 </form>
+            </div>
+        </div>
 
-                {# Links #}
-                <div class="text-center mt-3">
-                    <p>Vous n'avez pas encore de compte ? <a href="{{path('app_register')}}">Inscrivez-vous</a></p>
-                    <p><a href="{{path('app_visitor_welcome')}}">Retour à l'accueil</a></p>
+        <!-- Right Column - Graphic -->
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="graphic-placeholder h-100">
+                <div class="text-center p-4">
+                    <h3 class="h4 mb-3" style="color: var(--deep-blue);">L'impact de votre engagement</h3>
+                    <p class="mb-4" style="color: var(--lavender);">
+                        Visualisez en temps réel l'impact de vos choix éthiques<br>
+                        sur notre écosystème partenaire
+                    </p>
+                    <div style="height: 200px; background-color: rgba(33,33,77,0.05); border-radius: 8px;" class="d-flex align-items-center justify-content-center">
+                        [VISUALISATION GRAPHIQUE ICI]
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</main>
+
+
 {% endblock %}
