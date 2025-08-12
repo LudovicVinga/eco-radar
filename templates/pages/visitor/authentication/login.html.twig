@@ -108,7 +108,7 @@
         <div class="col-lg-6">
             <div class="login-hero h-100">
                 <div class="text-center mb-5">
-                    <img src="{{ asset('images/logo_ecoradar.svg') }}" alt="EcoRadar" style="height: 50px;" class="mb-4">
+                    {# <img src="{{ asset('images/logo_ecoradar.svg') }}" alt="EcoRadar" style="height: 50px;" class="mb-4"> #}
                     <h1 class="login-title display-5 fw-bold">Accédez à votre espace professionnel</h1>
                     <p class="login-subtitle">Votre portail d'analyse et de gestion des engagements éthiques</p>
                 </div>
@@ -150,20 +150,14 @@
         </div>
 
         <!-- Right Column - Graphic -->
-        <div class="col-lg-6 d-none d-lg-block">
-            <div class="graphic-placeholder h-100">
-                <div class="text-center p-4">
-                    <h3 class="h4 mb-3" style="color: var(--deep-blue);">L'impact de votre engagement</h3>
-                    <p class="mb-4" style="color: var(--lavender);">
-                        Visualisez en temps réel l'impact de vos choix éthiques<br>
-                        sur notre écosystème partenaire
-                    </p>
-                    <div style="height: 200px; background-color: rgba(33,33,77,0.05); border-radius: 8px;" class="d-flex align-items-center justify-content-center">
-                        [VISUALISATION GRAPHIQUE ICI]
-                    </div>
-                </div>
-            </div>
-        </div>
+       <div class="col-lg-6 d-none d-lg-block p-0">
+  <img
+    src="{{ asset('images/static/visitor/image-connexion.png') }}"
+    alt="Connexion EcoRadar"
+    class="w-100 h-100"
+    style="object-fit: cover;"
+  >
+</div>
     </div>
 </main>
 

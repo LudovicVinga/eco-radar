@@ -3,27 +3,31 @@
 {% block title %}Bienvenue sur EcoRadar{% endblock %}
 
 {% block main %}
-<section class="position-relative text-white text-center fade-in-on-scroll"
-         style="background: url('{{ asset('images/static/visitor/pexels-ron-lach-8306367.jpg') }}') center/cover no-repeat;
-                height: 80vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 2rem;
-                overflow: hidden;
-                margin: 2rem;">
+<section class="position-relative text-white text-center"
+         style="height: 80vh; display: flex; align-items: center; justify-content: center; border-radius: 2rem; overflow: hidden; margin: 2rem;">
 
-    <div class="bg-dark bg-opacity-50 p-4 rounded-5 shadow-lg" style="max-width: 700px;">
+    <!-- Vidéo YouTube en arrière-plan -->
+    <iframe 
+        src="https://www.youtube.com/embed/3_FaP7WxI9E?autoplay=1&mute=1&loop=1&playlist=3_FaP7WxI9E&controls=0&showinfo=0&modestbranding=1"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        class="position-absolute top-0 start-0 w-100 h-100"
+        style="object-fit: cover; z-index: 1;">
+    </iframe>
+
+    <!-- Overlay sombre -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50" style="z-index: 2;"></div>
+
+    <!-- Contenu texte -->
+    <div class="p-4 rounded-5 shadow-lg position-relative" style="max-width: 700px; z-index: 3;">
         <h1 class="display-5 fw-bold mb-3">Repérez les labels de mode éthique</h1>
         <p class="lead mb-4">Découvrez les certifications du monde entier<br>et soutenez une mode responsable.</p>
         <a href="{{ path('landing_labels') }}" class="btn btn-lg text-black" style="background-color: #f4b860;">Découvrir les labels</a>
-
     </div>
+
 </section>
 {% endblock %}
-
 
 {% block body %}
 {#  ajouter du contenu ici si nécessaire. #}
 {% endblock %}
-

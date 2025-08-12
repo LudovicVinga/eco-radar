@@ -5,23 +5,34 @@
 {% block main %}
     <h1 class="text-center mb-3 display-5 text-mainText fw-bold fst-italic">EcoRadar</h1>
 
-    {# Section Héro #}
-  <section class="hero-section">
-    <div class="video-background">
-        <iframe 
-            src="https://youtu.be/3_FaP7WxI9E?si=oV3M5WEASb2Lf57V" 
-            frameborder="0" 
-            allow="autoplay; fullscreen" 
-            allowfullscreen>
-        </iframe>
-    </div>
+   {# --- HERO avec vidéo YouTube en arrière-plan --- #}
+<section class="hero-section hero-video position-relative">
+  <!-- Vidéo YouTube en arrière-plan -->
+  <div class="yt-bg">
+    <iframe
+      src="https://www.youtube.com/embed/3_FaP7WxI9E?autoplay=1&mute=1&controls=0&loop=1&playlist=3_FaP7WxI9E&modestbranding=1&playsinline=1"
+      title="EcoRadar Hero"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+  </div>
 
-    <div class="hero-content">
-        <h1>Repérez les labels de mode éthique</h1>
-        <p>Découvrez les certifications du monde entier et soutenez une mode responsable.</p>
-        <a href="{{ path('labels_landing') }}" class="btn btn-warning">Découvrir les labels</a>
-    </div>
+  <!-- Overlay sombre si voulu -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,.35); z-index: 2;"></div>
+
+  <!-- Contenu -->
+  <div class="hero-content d-flex flex-column justify-content-center align-items-center text-center h-100">
+    <h1 class="fw-bold display-4">Repérez les labels de mode éthique</h1>
+    <p class="lead mb-4">Découvrez les certifications du monde entier et soutenez un modèle responsable.</p>
+    <a href="{{ path('explorer') }}" class="btn btn-lg px-4" style="background-color:#f4b860; color:#000;">
+      Découvrir les labels
+    </a>
+  </div>
 </section>
+
+
+
 
 
 

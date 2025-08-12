@@ -146,3 +146,41 @@ body {
 .comparison-table tr:hover td {
     background-color: rgba(140, 119, 176, 0.05);
 }
+
+.sector-hero--image {
+    position: relative;
+    min-height: 520px; /* ajuste si besoin (vh possible) */
+    border-radius: 20px;
+    overflow: hidden;
+}
+.sector-hero--image .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+}
+.sector-hero--image .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.35));
+}
+.sector-hero--image .container {
+    position: relative;
+    z-index: 2;
+}
+.sector-badge {
+    display: inline-block;
+    background: rgba(251, 176, 59, 0.9);
+    color: #21214d;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+}
+@media (max-width: 576px) {
+    .sector-hero--image {
+        min-height: 380px;
+    }
+}
