@@ -5,598 +5,511 @@
 {% block body %}
 <!-- Sector Navigation -->
 <div class="sector-nav py-3 sticky-top">
-    <div class="container">
-        <ul class="nav nav-pills justify-content-center">
-            <li class="nav-item">
-                <a class="nav-link active" href="#textile" data-bs-toggle="pill">Textile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#cosmetique" data-bs-toggle="pill">Cosmétique</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#alimentaire" data-bs-toggle="pill">Alimentaire</a>
-            </li>
-        </ul>
-    </div>
+  <div class="container">
+    <ul class="nav nav-pills justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" href="#textile" data-bs-toggle="pill">Textile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#cosmetique" data-bs-toggle="pill">Cosmétique</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#alimentaire" data-bs-toggle="pill">Alimentaire</a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="tab-content">
-    <div class="tab-pane fade show active" id="textile">
-        <section class="sector-hero py-5">
-    <div class="container">
+
+  {# ======================= TEXTILE ======================= #}
+  <div class="tab-pane fade show active" id="textile">
+    <section class="sector-hero py-5">
+      <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <span class="sector-badge">TEXTILE RESPONSABLE</span>
-                <h1 class="display-5 fw-bold mb-3">
-                    Décryptez les véritables engagements derrière les étiquettes
-                </h1>
-                <p class="lead mb-4">
-                    Notre analyse indépendante révèle la réalité des pratiques durables 
-                    dans l'industrie textile, au-delà des allégations marketing.
-                </p>
-                <button class="btn btn-sector">
-                    <i class="fas fa-download me-2"></i> Télécharger le rapport complet
-                </button>
-            </div>
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <div class="graphic-container h-100">
-                   <div class="graphic-placeholder p-3">
-    <canvas id="textileChart"></canvas>
-</div>
+          <div class="col-lg-6">
+            <span class="sector-badge">TEXTILE RESPONSABLE</span>
+            <h1 class="display-5 fw-bold mb-3">
+              Décryptez les véritables engagements derrière les étiquettes
+            </h1>
+            <p class="lead mb-4">
+              Notre analyse indépendante révèle la réalité des pratiques durables
+              dans l'industrie textile, au-delà des allégations marketing.
+            </p>
+            <button class="btn btn-sector">
+              <i class="fas fa-download me-2"></i> Télécharger le rapport complet
+            </button>
+          </div>
 
-                </div>
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="graphic-container h-100">
+              <div class="graphic-placeholder p-3">
+                {# ✅ UN SEUL CANVAS #}
+                <canvas id="textileChart"></canvas>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
 
+        {# Liens directs (en plus de la légende cliquable) #}
+        {# <div class="row g-3 mt-3">
+          <div class="col-6 col-md-3">
+            <a class="btn w-100 btn-outline-secondary" href="{{ path('app_textile_gots') }}">🧵 GOTS</a>
+          </div>
+          <div class="col-6 col-md-3">
+            <a class="btn w-100 btn-outline-secondary" href="{{ path('app_textile_oekotex') }}">🧪 Oeko-Tex</a>
+          </div>
+          <div class="col-6 col-md-3">
+            <a class="btn w-100 btn-outline-secondary" href="{{ path('app_textile_fairwear') }}">👕 Fair Wear</a>
+          </div>
+          <div class="col-6 col-md-3">
+            <a class="btn w-100 btn-outline-secondary" href="{{ path('app_textile_autres') }}">🏷️ Autres</a>
+          </div>
+        </div> #}
+      </div>
+    </section>
 
-<section class="container my-5">
-    <div class="row g-4 mb-5">
+    <section class="container my-5">
+      <div class="row g-4 mb-5">
         <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Labels analysés</h3>
-                <div class="metric-value mb-3">28</div>
-                <p class="small">Dans l'industrie textile mondiale</p>
-            </div>
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Labels analysés</h3>
+            <div class="metric-value mb-3">28</div>
+            <p class="small">Dans l'industrie textile mondiale</p>
+          </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Conformité réelle</h3>
-                <div class="metric-value mb-3">64%</div>
-                <p class="small">Des labels respectent tous leurs critères déclarés</p>
-            </div>
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Conformité réelle</h3>
+            <div class="metric-value mb-3">64%</div>
+            <p class="small">Des labels respectent tous leurs critères déclarés</p>
+          </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Transparence</h3>
-                <div class="metric-value mb-3">B-</div>
-                <p class="small">Note moyenne des audits de chaîne d'approvisionnement</p>
-            </div>
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Transparence</h3>
+            <div class="metric-value mb-3">B-</div>
+            <p class="small">Note moyenne des audits de chaîne d'approvisionnement</p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="row g-4">
+      <div class="row g-4">
         <div class="col-lg-6">
-            <h2 class="sector-title mb-4">Tendances clés 2023</h2>
-            <div class="card p-4 h-100">
-                <ul class="list-unstyled">
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Coton biologique</h4>
-                            <p class="small mb-0">+42% de labels certifiés depuis 2020</p>
-                        </div>
-                    </li>
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Teintures non toxiques</h4>
-                            <p class="small mb-0">Le critère le moins bien respecté (37% de conformité)</p>
-                        </div>
-                    </li>
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Travail équitable</h4>
-                            <p class="small mb-0">78% des labels incluent désormais ce critère</p>
-                        </div>
-                    </li>
-                    <li class="d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Recyclage</h4>
-                            <p class="small mb-0">Seulement 22% des labels imposent un % minimum</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+          <h2 class="sector-title mb-4">Tendances clés 2023</h2>
+          <div class="card p-4 h-40">
+            <ul class="list-unstyled">
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Coton biologique</h4>
+                  <p class="small mb-0">+42% de labels certifiés depuis 2020</p>
+                </div>
+              </li>
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Teintures non toxiques</h4>
+                  <p class="small mb-0">Le critère le moins bien respecté (37% de conformité)</p>
+                </div>
+              </li>
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Travail équitable</h4>
+                  <p class="small mb-0">78% des labels incluent désormais ce critère</p>
+                </div>
+              </li>
+              <li class="d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Recyclage</h4>
+                  <p class="small mb-0">Seulement 22% des labels imposent un % minimum</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
+
         <div class="col-lg-6">
-            <h2 class="sector-title mb-4">Comparaison sectorielle</h2>
-            <div class="card p-4 h-100">
-                <div class="table-responsive">
-                    <table class="table comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Critère</th>
-                                <th>Textile</th>
-                                <th>Moyenne générale</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Transparence</td>
-                                <td>B-</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>Impact environnemental</td>
-                                <td>C+</td>
-                                <td>B-</td>
-                            </tr>
-                            <tr>
-                                <td>Conditions sociales</td>
-                                <td>B</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>Innovation</td>
-                                <td>B+</td>
-                                <td>B-</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+          <h2 class="sector-title mb-4">Comparaison sectorielle</h2>
+          <div class="card p-4 h-90">
+            <div class="table-responsive">
+              <table class="table comparison-table">
+                <thead>
+                  <tr>
+                    <th>Critère</th>
+                    <th>Textile</th>
+                    <th>Moyenne générale</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Transparence</td><td>B-</td><td>B</td></tr>
+                  <tr><td>Impact environnemental</td><td>C+</td><td>B-</td></tr>
+                  <tr><td>Conditions sociales</td><td>B</td><td>B</td></tr>
+                  <tr><td>Innovation</td><td>B+</td><td>B-</td></tr>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
+  </div>
 
-<section class="container my-5">
-    <h2 class="sector-title mb-4">Focus : Matières premières</h2>
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="graphic-container" style="height: 300px;">
-                <div class="graphic-placeholder">
-                    <div class="text-center">
-                        <i class="fas fa-recycle mb-3" style="font-size: 3rem;"></i>
-                        <p class="mb-0">[Graphique : Répartition des matières premières<br>dans les collections certifiées]</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="graphic-container" style="height: 300px;">
-                <div class="graphic-placeholder">
-                    <div class="text-center">
-                        <i class="fas fa-map-marked-alt mb-3" style="font-size: 3rem;"></i>
-                        <p class="mb-0">[Carte : Origine géographique des productions<br>textiles certifiées]</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    </div>
-    <div class="tab-pane fade" id="cosmetique">
-        <section class="sector-hero py-5" style="background: linear-gradient(135deg, rgba(33,33,77,0.03) 0%, rgba(251,176,59,0.05) 100%);">
-    <div class="container">
+  {# ======================= COSMÉTIQUE ======================= #}
+  <div class="tab-pane fade" id="cosmetique">
+    <section class="sector-hero py-5" style="background: linear-gradient(135deg, rgba(33,33,77,0.03) 0%, rgba(251,176,59,0.05) 100%);">
+      <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <span class="sector-badge">COSMÉTIQUE VERTE</span>
-                <h1 class="display-5 fw-bold mb-3">La <span style="color: var(--lavender);">transparence</span> au cœur des formulations</h1>
-                <p class="lead mb-4">
-                    Analyse des compositions et allégations dans l'industrie cosmétique.
-                    Découvrez ce que contiennent réellement vos produits.
-                </p>
-                <button class="btn btn-sector">
-                    <i class="fas fa-download me-2"></i> Télécharger le rapport complet
-                </button>
-            </div>
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <div class="graphic-container h-100">
-    <div class="graphic-placeholder p-3">
-        <canvas id="cosmeticChart"></canvas>
-    </div>
-</div>
+          <div class="col-lg-6">
+            <span class="sector-badge">COSMÉTIQUE VERTE</span>
+            <h1 class="display-5 fw-bold mb-3">La transparence au cœur des formulations</h1>
+            <p class="lead mb-4">
+              Analyse des compositions et allégations dans l'industrie cosmétique.
+              Découvrez ce que contiennent réellement vos produits.
+            </p>
+            <button class="btn btn-sector">
+              <i class="fas fa-download me-2"></i> Télécharger le rapport complet
+            </button>
+          </div>
 
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="graphic-container h-100">
+              <div class="graphic-placeholder p-3">
+                <canvas id="cosmeticChart"></canvas>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="container my-5">
-    <div class="row g-4 mb-5">
+    <section class="container my-5">
+      <div class="row g-4 mb-5">
         <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Produits analysés</h3>
-                <div class="metric-value mb-3">1,240</div>
-                <p class="small">Dans 42 marques certifiées</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Ingrédients à risque</h3>
-                <div class="metric-value mb-3">18%</div>
-                <p class="small">Contiennent des perturbateurs endocriniens</p>
-            </div>
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Produits analysés</h3>
+            <div class="metric-value mb-3">1,240</div>
+            <p class="small">Dans 42 marques certifiées</p>
+          </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Emballages</h3>
-                <div class="metric-value mb-3">C+</div>
-                <p class="small">Note moyenne sur l'éco-conception</p>
-            </div>
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Ingrédients à risque</h3>
+            <div class="metric-value mb-3">18%</div>
+            <p class="small">Contiennent des perturbateurs endocriniens</p>
+          </div>
         </div>
-    </div>
+        <div class="col-md-4">
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Emballages</h3>
+            <div class="metric-value mb-3">C+</div>
+            <p class="small">Note moyenne sur l'éco-conception</p>
+          </div>
+        </div>
+      </div>
 
-    <div class="row g-4">
+      <div class="row g-4">
         <div class="col-lg-6">
-            <h2 class="sector-title mb-4">Tendances clés 2023</h2>
-            <div class="card p-4 h-100">
-                <ul class="list-unstyled">
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Clean beauty</h4>
-                            <p class="small mb-0">+58% de lancements "sans ingrédients controversés"</p>
-                        </div>
-                    </li>
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Origine végétale</h4>
-                            <p class="small mb-0">92% des nouveaux labels incluent ce critère</p>
-                        </div>
-                    </li>
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Tests animaux</h4>
-                            <p class="small mb-0">Interdits dans 89% des certifications</p>
-                        </div>
-                    </li>
-                    <li class="d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Local sourcing</h4>
-                            <p class="small mb-0">Seulement 31% des marques le garantissent</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+          <h2 class="sector-title mb-4">Tendances clés 2023</h2>
+          <div class="card p-4 h-100">
+            <ul class="list-unstyled">
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Clean beauty</h4>
+                  <p class="small mb-0">+58% de lancements "sans ingrédients controversés"</p>
+                </div>
+              </li>
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Origine végétale</h4>
+                  <p class="small mb-0">92% des nouveaux labels incluent ce critère</p>
+                </div>
+              </li>
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Tests animaux</h4>
+                  <p class="small mb-0">Interdits dans 89% des certifications</p>
+                </div>
+              </li>
+              <li class="d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Local sourcing</h4>
+                  <p class="small mb-0">Seulement 31% des marques le garantissent</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
+
         <div class="col-lg-6">
-            <h2 class="sector-title mb-4">Comparaison par catégorie</h2>
-            <div class="card p-4 h-100">
-                <div class="table-responsive">
-                    <table class="table comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Type de produit</th>
-                                <th>Naturalité</th>
-                                <th>Empreinte</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Soins visage</td>
-                                <td>B+</td>
-                                <td>C</td>
-                            </tr>
-                            <tr>
-                                <td>Maquillage</td>
-                                <td>C+</td>
-                                <td>D</td>
-                            </tr>
-                            <tr>
-                                <td>Hygiène</td>
-                                <td>B</td>
-                                <td>B-</td>
-                            </tr>
-                            <tr>
-                                <td>Parfums</td>
-                                <td>D</td>
-                                <td>D+</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+          <h2 class="sector-title mb-4">Comparaison par catégorie</h2>
+          <div class="card p-4 h-100">
+            <div class="table-responsive">
+              <table class="table comparison-table">
+                <thead>
+                  <tr>
+                    <th>Type de produit</th>
+                    <th>Naturalité</th>
+                    <th>Empreinte</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Soins visage</td><td>B+</td><td>C</td></tr>
+                  <tr><td>Maquillage</td><td>C+</td><td>D</td></tr>
+                  <tr><td>Hygiène</td><td>B</td><td>B-</td></tr>
+                  <tr><td>Parfums</td><td>D</td><td>D+</td></tr>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
-    </div>
-</section>
 
-<section class="container my-5">
-    <h2 class="sector-title mb-4">Focus : Composition</h2>
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="graphic-container" style="height: 300px;">
-                <div class="graphic-placeholder">
-                    <div class="text-center">
-                        <i class="fas fa-flask mb-3" style="font-size: 3rem;"></i>
-                        <p class="mb-0">[Graphique : Répartition des types d'ingrédients<br>dans les produits certifiés]</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-           <div class="graphic-container" style="height: 300px;">
-                <div class="graphic-placeholder">
-                    <div class="text-center">
-                        <i class="fas fa-leaf mb-3" style="font-size: 3rem;"></i>
-                        <p class="mb-0">[Diagramme : Pourcentage d'ingrédients<br>d'origine naturelle par marque]</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </section>
+  </div>
 
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    </div>
-    <div class="tab-pane fade" id="alimentaire">
-       <section class="sector-hero py-5" style="background: linear-gradient(135deg, rgba(33,33,77,0.03) 0%, rgba(140,119,176,0.05) 100%);">
-    <div class="container">
+  {# ======================= ALIMENTAIRE ======================= #}
+  <div class="tab-pane fade" id="alimentaire">
+    <section class="sector-hero py-5" style="background: linear-gradient(135deg, rgba(33,33,77,0.03) 0%, rgba(140,119,176,0.05) 100%);">
+      <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <span class="sector-badge">ALIMENTATION DURABLE</span>
-                <h1 class="display-5 fw-bold mb-3">De la <span style="color: var(--lavender);">fourche à la fourchette</span>, tracez chaque étape</h1>
-                <p class="lead mb-4">
-                    Notre plateforme révèle l'impact réel des certifications alimentaires
-                    sur toute la chaîne de valeur.
-                </p>
-                <button class="btn btn-sector">
-                    <i class="fas fa-download me-2"></i> Télécharger le rapport complet
-                </button>
-            </div>
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <div class="graphic-container h-100">
-    <div class="graphic-placeholder p-3">
-        <canvas id="foodChart"></canvas>
-    </div>
-</div>
+          <div class="col-lg-6">
+            <span class="sector-badge">ALIMENTATION DURABLE</span>
+            <h1 class="display-5 fw-bold mb-3">De la fourche à la fourchette, tracez chaque étape</h1>
+            <p class="lead mb-4">
+              Notre plateforme révèle l'impact réel des certifications alimentaires
+              sur toute la chaîne de valeur.
+            </p>
+            <button class="btn btn-sector">
+              <i class="fas fa-download me-2"></i> Télécharger le rapport complet
+            </button>
+          </div>
 
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="graphic-container h-100">
+              <div class="graphic-placeholder p-3">
+                <canvas id="foodChart"></canvas>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="container my-5">
-    <div class="row g-4 mb-5">
+    <section class="container my-5">
+      <div class="row g-4 mb-5">
         <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Labels analysés</h3>
-                <div class="metric-value mb-3">56</div>
-                <p class="small">Couverture internationale</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Circuit court</h3>
-                <div class="metric-value mb-3">72%</div>
-                <p class="small">Des certifications locales incluent ce critère</p>
-            </div>
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Labels analysés</h3>
+            <div class="metric-value mb-3">56</div>
+            <p class="small">Couverture internationale</p>
+          </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-metric p-4">
-                <h3 class="h5 mb-3">Empreinte carbone</h3>
-                <div class="metric-value mb-3">B-</div>
-                <p class="small">Moyenne sectorielle</p>
-            </div>
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Circuit court</h3>
+            <div class="metric-value mb-3">72%</div>
+            <p class="small">Des certifications locales incluent ce critère</p>
+          </div>
         </div>
-    </div>
+        <div class="col-md-4">
+          <div class="card card-metric p-4">
+            <h3 class="h5 mb-3">Empreinte carbone</h3>
+            <div class="metric-value mb-3">B-</div>
+            <p class="small">Moyenne sectorielle</p>
+          </div>
+        </div>
+      </div>
 
-    <div class="row g-4">
+      <div class="row g-4">
         <div class="col-lg-6">
-            <h2 class="sector-title mb-4">Tendances clés 2023</h2>
-            <div class="card p-4 h-100">
-                <ul class="list-unstyled">
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Bio</h4>
-                            <p class="small mb-0">+35% de produits certifiés depuis 2020</p>
-                        </div>
-                    </li>
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Saisonnalité</h4>
-                            <p class="small mb-0">Critère clé pour 68% des consommateurs</p>
-                        </div>
-                    </li>
-                    <li class="mb-3 d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Bien-être animal</h4>
-                            <p class="small mb-0">Exigence dans 92% des nouveaux labels</p>
-                        </div>
-                    </li>
-                    <li class="d-flex">
-                        <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
-                        <div>
-                            <h4 class="h6 mb-1">Emballages</h4>
-                            <p class="small mb-0">Seulement 24% des labels imposent le recyclable</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+          <h2 class="sector-title mb-4">Tendances clés 2023</h2>
+          <div class="card p-4 h-100">
+            <ul class="list-unstyled">
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Bio</h4>
+                  <p class="small mb-0">+35% de produits certifiés depuis 2020</p>
+                </div>
+              </li>
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Saisonnalité</h4>
+                  <p class="small mb-0">Critère clé pour 68% des consommateurs</p>
+                </div>
+              </li>
+              <li class="mb-3 d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Bien-être animal</h4>
+                  <p class="small mb-0">Exigence dans 92% des nouveaux labels</p>
+                </div>
+              </li>
+              <li class="d-flex">
+                <i class="fas fa-check-circle me-3" style="color: var(--sunshine);"></i>
+                <div>
+                  <h4 class="h6 mb-1">Emballages</h4>
+                  <p class="small mb-0">Seulement 24% des labels imposent le recyclable</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
+
         <div class="col-lg-6">
-            <h2 class="sector-title mb-4">Comparaison par catégorie</h2>
-            <div class="card p-4 h-100">
-                <div class="table-responsive">
-                    <table class="table comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Type de produit</th>
-                                <th>Durabilité</th>
-                                <th>Social</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Fruits/Légumes</td>
-                                <td>A-</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>Viandes</td>
-                                <td>C</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>Céréales</td>
-                                <td>B+</td>
-                                <td>A-</td>
-                            </tr>
-                            <tr>
-                                <td>Produits laitiers</td>
-                                <td>B-</td>
-                                <td>B</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+          <h2 class="sector-title mb-4">Comparaison par catégorie</h2>
+          <div class="card p-4 h-100">
+            <div class="table-responsive">
+              <table class="table comparison-table">
+                <thead>
+                  <tr>
+                    <th>Type de produit</th>
+                    <th>Durabilité</th>
+                    <th>Social</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Fruits/Légumes</td><td>A-</td><td>B+</td></tr>
+                  <tr><td>Viandes</td><td>C</td><td>B</td></tr>
+                  <tr><td>Céréales</td><td>B+</td><td>A-</td></tr>
+                  <tr><td>Produits laitiers</td><td>B-</td><td>B</td></tr>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
-    </div>
-</section>
 
-<section class="container my-5">
-    <h2 class="sector-title mb-4">Focus : Impact environnemental</h2>
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="graphic-container" style="height: 300px;">
-                <div class="graphic-placeholder">
-                    <div class="text-center">
-                        <i class="fas fa-tint mb-3" style="font-size: 3rem;"></i>
-                        <p class="mb-0">[Graphique : Consommation d'eau comparée<br>entre productions conventionnelles et certifiées]</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-             <div class="graphic-container" style="height: 300px;">
-                <div class="graphic-placeholder">
-                    <div class="text-center">
-                        <i class="fas fa-gas-pump mb-3" style="font-size: 3rem;"></i>
-                        <p class="mb-0">[Diagramme : Émissions CO2 par type<br>de produit alimentaire]</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </section>
+  </div>
 
-            </div>
-        </div>
-    </div>
-</section>
+</div> {# /tab-content #}
 
+{# ======================= SCRIPTS GRAPHIQUES ======================= #}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    // TEXTILE - affiché par défaut
-    const ctx = document.getElementById('textileChart').getContext('2d');
+  // Routes de redirection pour la légende du graphique "Textile"
+  const routesByIndex = {
+    0: "{{ path('app_textile_gots') }}",
+    1: "{{ path('app_textile_oekotex') }}",
+    2: "{{ path('app_textile_fairwear') }}",
+    3: "{{ path('app_textile_autres') }}"
+  };
+
+  // TEXTILE (affiché par défaut)
+  const textileCanvas = document.getElementById('textileChart');
+  if (textileCanvas) {
+    const ctx = textileCanvas.getContext('2d');
     new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Certifié GOTS', 'Oeko-Tex', 'Fair Wear', 'Autres'],
-            datasets: [{
-                label: 'Répartition des labels textiles',
-                data: [35, 25, 20, 20],
-                backgroundColor: [
-                    'rgba(140, 119, 176, 0.8)',
-                    'rgba(33, 33, 77, 0.8)',
-                    'rgba(251, 176, 59, 0.8)',
-                    'rgba(200, 200, 200, 0.8)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
+      type: 'doughnut',
+      data: {
+        labels: ['Certifié GOTS', 'Oeko-Tex', 'Fair Wear', 'Autres'],
+        datasets: [{
+          label: 'Répartition des labels textiles',
+          data: [35, 25, 20, 20],
+          backgroundColor: [
+            'rgba(140, 119, 176, 0.8)',
+            'rgba(33, 33, 77, 0.8)',
+            'rgba(251, 176, 59, 0.8)',
+            'rgba(200, 200, 200, 0.8)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            onClick: (_e, legendItem) => {
+              const idx = legendItem.index;
+              const url = routesByIndex[idx];
+              if (url) window.location.href = url;
             }
+          }
         }
+      }
     });
+  }
 
-    // COSMETIQUE - à charger dynamiquement
-    let cosmeticChartInitialized = false;
-    function initCosmeticChart() {
-        if (cosmeticChartInitialized) return;
-        const ctx2 = document.getElementById('cosmeticChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['Naturel', 'Bio', 'Synthétique', 'Mixte'],
-                datasets: [{
-                    label: 'Types de cosmétiques',
-                    data: [40, 30, 20, 10],
-                    backgroundColor: [
-                        'rgba(140, 119, 176, 0.8)',
-                        'rgba(251, 176, 59, 0.8)',
-                        'rgba(33, 33, 77, 0.8)',
-                        'rgba(200, 200, 200, 0.8)'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: { y: { beginAtZero: true } }
-            }
-        });
-        cosmeticChartInitialized = true;
-    }
-
-    // ALIMENTAIRE - à charger dynamiquement
-    let foodChartInitialized = false;
-    function initFoodChart() {
-        if (foodChartInitialized) return;
-        const ctx3 = document.getElementById('foodChart').getContext('2d');
-        new Chart(ctx3, {
-            type: 'pie',
-            data: {
-                labels: ['Bio', 'Local', 'Équitable', 'Conventionnel'],
-                datasets: [{
-                    label: 'Types de production',
-                    data: [35, 25, 20, 20],
-                    backgroundColor: [
-                        'rgba(251, 176, 59, 0.8)',
-                        'rgba(140, 119, 176, 0.8)',
-                        'rgba(33, 33, 77, 0.8)',
-                        'rgba(200, 200, 200, 0.8)'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { position: 'bottom' } }
-            }
-        });
-        foodChartInitialized = true;
-    }
-
-    // ➕ Bootstrap tab listener (le bon événement !)
-    const tabLinks = document.querySelectorAll('.nav-link[data-bs-toggle="pill"]');
-    tabLinks.forEach(link => {
-        link.addEventListener('shown.bs.tab', function (event) {
-            const targetId = event.target.getAttribute('href');
-            if (targetId === '#cosmetique') initCosmeticChart();
-            if (targetId === '#alimentaire') initFoodChart();
-        });
+  // COSMÉTIQUE (lazy init)
+  let cosmeticChartInitialized = false;
+  function initCosmeticChart() {
+    if (cosmeticChartInitialized) return;
+    const canvas = document.getElementById('cosmeticChart');
+    if (!canvas) return;
+    const ctx2 = canvas.getContext('2d');
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Naturel', 'Bio', 'Synthétique', 'Mixte'],
+        datasets: [{
+          label: 'Types de cosmétiques',
+          data: [40, 30, 20, 10],
+          backgroundColor: [
+            'rgba(140, 119, 176, 0.8)',
+            'rgba(251, 176, 59, 0.8)',
+            'rgba(33, 33, 77, 0.8)',
+            'rgba(200, 200, 200, 0.8)'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
     });
+    cosmeticChartInitialized = true;
+  }
+
+  // ALIMENTAIRE (lazy init)
+  let foodChartInitialized = false;
+  function initFoodChart() {
+    if (foodChartInitialized) return;
+    const canvas = document.getElementById('foodChart');
+    if (!canvas) return;
+    const ctx3 = canvas.getContext('2d');
+    new Chart(ctx3, {
+      type: 'pie',
+      data: {
+        labels: ['Bio', 'Local', 'Équitable', 'Conventionnel'],
+        datasets: [{
+          label: 'Types de production',
+          data: [35, 25, 20, 20],
+          backgroundColor: [
+            'rgba(251, 176, 59, 0.8)',
+            'rgba(140, 119, 176, 0.8)',
+            'rgba(33, 33, 77, 0.8)',
+            'rgba(200, 200, 200, 0.8)'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+    foodChartInitialized = true;
+  }
+
+  // Bootstrap tabs — déclenche l'init au premier affichage de l'onglet
+  const tabLinks = document.querySelectorAll('.nav-link[data-bs-toggle="pill"]');
+  tabLinks.forEach(link => {
+    link.addEventListener('shown.bs.tab', (event) => {
+      const targetId = event.target.getAttribute('href');
+      if (targetId === '#cosmetique') initCosmeticChart();
+      if (targetId === '#alimentaire') initFoodChart();
+    });
+  });
 });
-
 </script>
-
-
 {% endblock %}
- 

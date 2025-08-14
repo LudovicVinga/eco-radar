@@ -1,0 +1,76 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}OEKO-TEX® — EcoRadar{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+
+      <div class="text-center mb-4">
+        <img src="https://www.oeko-tex.com/themes/custom/oekotex/images/logo.svg"
+             alt="Logo OEKO-TEX"
+             class="img-fluid" style="max-height: 80px;">
+      </div>
+
+      <h1 class="text-center mb-2">OEKO-TEX® Standard</h1>
+      <p class="text-center text-muted mb-4">
+        Standard international qui garantit l’absence de substances nocives dans les produits textiles.
+      </p>
+
+      <div class="alert alert-info">
+        <strong>Fonction principale :</strong> assurer la sécurité sanitaire des textiles (tests sur centaines de substances)
+        selon des limites plus strictes que les exigences légales de nombreux pays.
+      </div>
+
+      <h3 class="mt-4">📊 Niveaux / Classes de certification</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead class="table-light">
+            <tr>
+              <th style="width:160px;">Classe</th>
+              <th>Exigences / Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Classe I</strong></td>
+              <td>Textiles pour bébés et jeunes enfants (exigences les plus strictes).</td>
+            </tr>
+            <tr>
+              <td><strong>Classe II</strong></td>
+              <td>Textiles en contact direct avec la peau (t-shirts, sous-vêtements, etc.).</td>
+            </tr>
+            <tr>
+              <td><strong>Classe III</strong></td>
+              <td>Textiles sans contact direct prolongé avec la peau (vestes, manteaux, etc.).</td>
+            </tr>
+            <tr>
+              <td><strong>Classe IV</strong></td>
+              <td>Matériaux d’ameublement et textiles décoratifs (rideaux, tapisserie, etc.).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4">
+        <h3>🔍 Points clés</h3>
+        <ul>
+          <li>Tests de substances réglementées et non réglementées (métaux lourds, PFC, colorants azoïques, etc.).</li>
+          <li>Mises à jour régulières des valeurs limites selon l’état de la science.</li>
+          <li>Applicable sur de nombreuses catégories de produits et composants.</li>
+        </ul>
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+        <a href="{{ url('app_sectors') ~ '#textile' }}" class="btn btn-outline-secondary">
+          ← Retour au secteur Textile
+        </a>
+        <a href="{{ path('app_textile_gots') }}" class="btn btn-light">Voir GOTS</a>
+        <a href="{{ path('app_textile_fairwear') }}" class="btn btn-light">Voir Fair Wear</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}Fair Wear – EcoRadar{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ path('app_visualisations') }}">Visualisations</a></li>
+          <li class="breadcrumb-item"><a href="{{ path('app_sectors') }}#textile">Textile</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Fair Wear</li>
+        </ol>
+      </nav>
+
+      <div class="text-center">
+        <img src="https://www.fairwear.org/wp-content/uploads/2020/12/fairwear-logo.svg"
+             alt="Logo Fair Wear" style="height:80px" class="mb-3">
+        <h1 class="mb-4">Fair Wear Foundation</h1>
+      </div>
+
+      <div class="card border-primary mb-4">
+        <div class="card-header bg-primary text-white">
+          <h4 class="m-0">🧵 Certification sociale textile</h4>
+        </div>
+        <div class="card-body">
+          <h5>Objectifs principaux :</h5>
+          <ul class="mb-0">
+            <li><strong>Améliorer les conditions de travail</strong> dans les usines textiles</li>
+            <li><strong>Traçabilité complète</strong> de la chaîne de production</li>
+            <li><strong>Audits indépendants</strong> sur 8 normes travail fondamentales</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert alert-info text-center">
+        <h5 class="mb-2">📌 Chiffres clés</h5>
+        <p class="mb-0">130 marques membres • 1 200 usines auditées • 14 pays de production</p>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="{{ path('app_sectors') }}#textile" class="btn btn-primary">
+          ← Retour aux certifications
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

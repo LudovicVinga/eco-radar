@@ -1,0 +1,25 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}Autres certifications textiles | EcoRadar{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h1 class="text-center mb-4">📜 Autres Certifications Textiles</h1>
+
+      <div class="list-group">
+        <a href="{{ path('app_textile_oekotex') }}" class="list-group-item list-group-item-action">
+          <h5 class="mb-1">OEKO-TEX®</h5>
+          <p class="mb-0">Testé contre les substances nocives.</p>
+        </a>
+
+        {# Bluesign n'a pas encore de route : soit on ajoute l'action, soit on retire ce lien #}
+        {# <a href="{{ path('app_textile_bluesign') }}" class="list-group-item list-group-item-action"> … </a> #}
+      </div>
+
+      <a href="{{ path('app_sectors') }}#textile" class="btn btn-outline-primary mt-3">← Retour</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

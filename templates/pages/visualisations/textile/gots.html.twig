@@ -1,0 +1,45 @@
+{% extends 'themes/base_visitor.html.twig' %}
+
+{% block title %}GOTS – EcoRadar{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+
+      <div class="text-center mb-4">
+        <img src="https://www.global-standard.org/themes/gots/logo.svg"
+             alt="Logo GOTS" class="img-fluid" style="max-height:100px">
+      </div>
+
+      <h1 class="text-center mb-4">Global Organic Textile Standard (GOTS)</h1>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h3 class="h5 mb-3">📌 Ce qu’il faut savoir</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">✅ Certification internationale pour textiles biologiques</li>
+            <li class="list-group-item">✅ Au moins 70% de fibres biologiques requises</li>
+            <li class="list-group-item">✅ Exige des pratiques sociales et environnementales responsables</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h3 class="h5 mb-3">🔍 Critères clés</h3>
+          <ul class="mb-0">
+            <li>Interdiction des substances toxiques (métaux lourds, formaldéhyde…)</li>
+            <li>Gestion responsable des eaux usées</li>
+            <li>Respect des normes sociales de l’OIT</li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="{{ path('app_sectors') }}#textile" class="btn btn-outline-primary">
+        ← Retour aux certifications textile
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

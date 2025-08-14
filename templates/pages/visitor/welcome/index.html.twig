@@ -3,29 +3,31 @@
 {% block title %}Bienvenue sur EcoRadar{% endblock %}
 
 {% block main %}
-<section class="position-relative text-white text-center"
-         style="height: 80vh; display: flex; align-items: center; justify-content: center; border-radius: 2rem; overflow: hidden; margin: 2rem;">
+<section class="hero-video-section position-relative text-white text-center"
+         style="height: 80vh; border-radius: 2rem; overflow: hidden; margin: 2rem;">
 
-    <!-- Vidéo YouTube en arrière-plan -->
-    <iframe 
-        src="https://www.youtube.com/embed/3_FaP7WxI9E?autoplay=1&mute=1&loop=1&playlist=3_FaP7WxI9E&controls=0&showinfo=0&modestbranding=1"
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        class="position-absolute top-0 start-0 w-100 h-100"
-        style="object-fit: cover; z-index: 1;">
-    </iframe>
+    <!-- Container vidéo -->
+    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; z-index: 1;">
+        <iframe 
+            src="https://www.youtube.com/embed/3_FaP7WxI9E?autoplay=1&mute=1&loop=1&playlist=3_FaP7WxI9E&controls=0&showinfo=0&modestbranding=1"
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            style="width: 100%; height: 100%;">
+        </iframe>
+    </div>
 
     <!-- Overlay sombre -->
     <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50" style="z-index: 2;"></div>
 
     <!-- Contenu texte -->
-    <div class="p-4 rounded-5 shadow-lg position-relative" style="max-width: 700px; z-index: 3;">
+    <div class="p-4 rounded-5 shadow-lg position-relative d-flex flex-column align-items-center justify-content-center h-100" style="max-width: 700px; z-index: 3; margin: auto;">
         <h1 class="display-5 fw-bold mb-3">Repérez les labels de mode éthique</h1>
         <p class="lead mb-4">Découvrez les certifications du monde entier<br>et soutenez une mode responsable.</p>
         <a href="{{ path('landing_labels') }}" class="btn btn-lg text-black" style="background-color: #f4b860;">Découvrir les labels</a>
     </div>
 
 </section>
+
 {% endblock %}
 
 {% block body %}
